@@ -1,0 +1,49 @@
+.main_content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    form {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 30px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 500px;
+        height: auto;
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 19px;
+            color: #072227;
+        }
+        input {
+            width: 100%;
+        }
+
+        .input_pass {
+            margin-top: 15px;
+        }
+
+        .button_submit {
+            margin-top: 20px;
+            width: 100%;
+            font-family: 'iransans';
+            background: #35858b;
+        }
+
+        a {
+            text-decoration: none;
+            margin-top: 30px;
+            color: #072227;
+            transition: all ease 0.3s;
+
+            &:hover {
+                color: #35858b;
+            }
+        }
+    }
+}
