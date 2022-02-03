@@ -1,6 +1,6 @@
 import { PATHS } from "config/routs.config";
 import Cart from "pages/cart.page/Cart";
-import Inventory from "pages/counting.management.page/Inventory";
+import Inventory from "pages/inventory.page/Inventory";
 import Final from "pages/finalBuy.page/Final";
 import Home from "pages/home.page/Home";
 import Login from "pages/login.page/Login";
