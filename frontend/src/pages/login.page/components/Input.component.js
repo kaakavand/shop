@@ -11,7 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import style from '../login.module.scss'
+import style from "../login.module.scss";
 
 export default function InputAdornments() {
     const [values, setValues] = React.useState({
@@ -44,11 +44,12 @@ export default function InputAdornments() {
                 label="username"
                 variant="outlined"
                 size="small"
+                name="username"
             />
 
             <div>
                 <FormControl
-                    sx={{width: "456px" }}
+                    sx={{ width: "456px" }}
                     variant="outlined"
                     size="small"
                     className={style.input_pass}
@@ -61,6 +62,7 @@ export default function InputAdornments() {
                         type={values.showPassword ? "text" : "password"}
                         value={values.password}
                         onChange={handleChange("password")}
+                        name="password"
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton

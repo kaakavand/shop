@@ -4,12 +4,21 @@ import style from "./login.module.scss";
 import Button from "@mui/material/Button";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { PATHS } from "config/routs.config";
+import { connect } from "react-redux";
+import { login } from "../../redux/action/login.action";
 
-function Login() {
+function Login(props) {
     let navigate = useNavigate();
-    const submitForm = () => {
-        localStorage.setItem("isLoggedIn", true);
-        navigate(PATHS.INVENTORY);
+
+
+    const submitForm = async (e) => {
+        e.preventDefault()
+        const form = new FormData(e.target);
+        const data = Object.fromEntries(form);
+        try {
+            const response = await props.login(data);
+            console.log(response.token);
+        } catch (e) {}
     };
 
     return (
@@ -30,4 +39,10 @@ function Login() {
     );
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+    login: (data) => dispatch(login(data)),
+});
+
+const LoginRedux = connect(undefined, mapDispatchToProps)(Login);
+
+export default LoginRedux;
