@@ -6,24 +6,28 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { PATHS } from "config/routs.config";
 import { connect } from "react-redux";
 import { login } from "../../redux/action/login.action";
+import { useRef } from "react";
 
 function Login(props) {
     let navigate = useNavigate();
-
+    const formRef = useRef()
 
     const submitForm = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const form = new FormData(e.target);
         const data = Object.fromEntries(form);
         try {
             const response = await props.login(data);
             console.log(response.token);
-        } catch (e) {}
+        } catch (e) {
+            formRef.current.style.boxShadow  = 'rgbA(244, 67, 54 , 35%) 0 0 5px 0.25rem'
+            // console.log(e);
+        }
     };
 
     return (
         <div className={style.main_content}>
-            <form onSubmit={submitForm} autocomplete="off">
+            <form onSubmit={submitForm} autocomplete="off" ref={formRef}>
                 <h2>ورود به پنل مدیریت فروشگاه </h2>
                 <InputAdornments />
                 <Button
