@@ -8,7 +8,7 @@ const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
 const jwt = require('jsonwebtoken');
 const AUTH_JWT_SECRET = 'TOP-SECRET';
-const AUTH_JWT_OPTIONS = {expiresIn: 2 * 60};
+const AUTH_JWT_OPTIONS = {expiresIn: 60 * 60};
 
 // Load DB file for Authentication middleware and endpoints
 const DB = JSON.parse(fs.readFileSync(path.join(__dirname, './db.json'), 'utf-8'));
