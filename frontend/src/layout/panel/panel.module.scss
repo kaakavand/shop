@@ -20,7 +20,6 @@
                 list-style: none;
                 display: flex;
                 align-items: center;
-                margin-left: 50px;
 
                 button.exit {
                     padding: 20px;
@@ -91,7 +90,6 @@
     .Button {
         font-family: "iransans";
         border: none;
-
     }
 
     .Button_special {
@@ -99,10 +97,6 @@
         border: none;
         border-right: 1px solid rgba(gray, 0.1) !important;
         border-left: 1px solid rgba(gray, 0.1) !important;
-
-        // &:active {
-        //     color: red !important;
-        // }
     }
 }
 
