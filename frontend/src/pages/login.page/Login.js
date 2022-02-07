@@ -10,7 +10,7 @@ import { useRef } from "react";
 
 function Login(props) {
     let navigate = useNavigate();
-    const formRef = useRef()
+    const formRef = useRef();
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -19,10 +19,11 @@ function Login(props) {
         try {
             const response = await props.login(data);
             console.log(response.token);
-            localStorage.setItem('isLoggedIn' , true)
-            navigate(PATHS.INVENTORY)
+            localStorage.setItem("isLoggedIn", true);
+            navigate(PATHS.INVENTORY);
         } catch (e) {
-            formRef.current.style.boxShadow  = 'rgbA(244, 67, 54 , 35%) 0 0 5px 0.25rem'
+            formRef.current.style.boxShadow =
+                "rgbA(244, 67, 54 , 35%) 0 0 5px 0.25rem";
             // console.log(e);
         }
     };

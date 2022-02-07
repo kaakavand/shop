@@ -2,7 +2,7 @@ import { HeaderPanel } from 'layout';
 import React from 'react';
 import style from './productManage.module.scss'
 import Button from '@mui/material/Button'
-import BasicTable from './components/ProductsList.component';
+import ProductsList from './components/ProductsList.component';
 
 function ProductManag() {
   return (
@@ -12,7 +12,7 @@ function ProductManag() {
               <Button variant="contained" className={style.button}>افزودن کالا</Button>
               <h3>مدیریت کالا ها</h3>
             </div>
-            <BasicTable/>
+            <ProductsList/>
           </div>
       </HeaderPanel>
   );
