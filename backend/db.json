@@ -8,7 +8,7 @@
         "65ddd8b1bbce4d8396b62611147fa1d6"
       ],
       "thumbnail": "4360257c8cb77217d76ac1a8e314031d",
-      "price": "1500",
+      "price": "15,000,000",
       "count": 150,
       "createdAt": 1643373068134,
       "id": 4,
@@ -26,8 +26,8 @@
         "65ddd8b1bbce4d8396b62611147fa1d6"
       ],
       "thumbnail": "4360257c8cb77217d76ac1a8e314031d",
-      "price": "1500",
-      "count": 150,
+      "price": "1,000,000",
+      "count": 100,
       "category": {
         "id": 14,
         "name": "Laptop",
@@ -44,8 +44,8 @@
         "65ddd8b1bbce4d8396b62611147fa1d6"
       ],
       "thumbnail": "4360257c8cb77217d76ac1a8e314031d",
-      "price": "1500",
-      "count": 150,
+      "price": "15,000",
+      "count": 1520,
       "category": {
         "id": 14,
         "name": "Laptop",
@@ -62,8 +62,8 @@
         "65ddd8b1bbce4d8396b62611147fa1d6"
       ],
       "thumbnail": "4360257c8cb77217d76ac1a8e314031d",
-      "price": "1500",
-      "count": 150,
+      "price": "15894",
+      "count": 350,
       "category": {
         "id": 14,
         "name": "Laptop",
@@ -80,8 +80,8 @@
         "65ddd8b1bbce4d8396b62611147fa1d6"
       ],
       "thumbnail": "4360257c8cb77217d76ac1a8e314031d",
-      "price": "1500",
-      "count": 150,
+      "price": "145,252,789",
+      "count": 985,
       "category": {
         "id": 14,
         "name": "Laptop",
