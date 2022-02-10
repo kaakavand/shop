@@ -12,8 +12,10 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute/Private";
 import { ProtectedRoute } from "./ProtectedRoute/Protected";
-
 import { PublicRoute } from "./PublicRoute/PublicRoute";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 export const AppRoute = () => {
     return (
         <BrowserRouter>

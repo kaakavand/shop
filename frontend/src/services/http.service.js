@@ -1,5 +1,11 @@
 import axios from "axios";
+import { PATHS } from "config/routs.config";
+// import { createBrowserHistory } from "history";
+import { createBrowserHistory } from "history";
+import { toast } from "react-toastify";
 
+
+const history = createBrowserHistory()
 class HttpService {
     constructor() {
         axios.defaults.baseURL = "http://localhost:3002";
@@ -8,7 +14,6 @@ class HttpService {
             (config) => {
                 const token = localStorage.getItem("ACCESS_TOKEN");
 
-                // console.log(config.url === '/auth/login');
                 if (config.url !== "/auth/login") {
                     config.headers["Token"] = `${token}`;
                 }
@@ -16,7 +21,7 @@ class HttpService {
                 return config;
             },
             (error) => {
-                console.log(error);
+                console.log(error.response);
                 return Promise.reject(error);
             }
         );
@@ -26,7 +31,12 @@ class HttpService {
                 return response;
             },
             (error) => {
-                console.log(error);
+                toast.error(error.response.data);
+                if (error.response.status === 401) {
+                    localStorage.setItem("isLoggedIn", false);
+                    history.push(PATHS.LOGIN);
+                    return Promise.reject(error);
+                }
                 return Promise.reject(error);
             }
         );

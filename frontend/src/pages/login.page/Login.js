@@ -7,6 +7,7 @@ import { PATHS } from "config/routs.config";
 import { connect } from "react-redux";
 import { login } from "../../redux/action/login.action";
 import { useRef } from "react";
+import { toast } from "react-toastify";
 
 function Login(props) {
     let navigate = useNavigate();
@@ -16,15 +17,19 @@ function Login(props) {
         e.preventDefault();
         const form = new FormData(e.target);
         const data = Object.fromEntries(form);
-        console.log('yes');
-        try {
-            await props.login(data);
-            navigate(PATHS.INVENTORY);
-        } catch (e) {
+
+        if (data.username.length > 3 && data.password.length > 3) {
+            try {
+                await props.login(data);
+                navigate(PATHS.INVENTORY);
+            } catch (e) {
+                formRef.current.style.boxShadow =
+                    "rgbA(244, 67, 54 , 100%) 0 0 5px 0.25rem";
+            }
+        } else {
             formRef.current.style.boxShadow =
-                "rgbA(244, 67, 54 , 35%) 0 0 5px 0.25rem";
-                alert('user not found')
-            console.log(e);
+                "rgbA(244, 67, 54 , 100%) 0 0 5px 0.25rem";
+            toast.error("No user with those credentials!");
         }
     };
 
