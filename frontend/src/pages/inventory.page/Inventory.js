@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { HeaderPanel } from "layout";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import InventoryList from "./components/InventoryList.component";
 import style from "./inventory.module.scss";
@@ -10,14 +10,19 @@ function Inventory() {
     const [inputs, setInputs] = useState([]);
     const [buttonValue, setButton] = useState(true);
     
+    useEffect(() => {
+        setButton(true)
+    }, [])
+    
 
     const setInfo = (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
         const data = Object.fromEntries(form);
-
         const amount = [];
         const price = [];
+
+
 
         for (const item in data) {
             if (data[item]) {
@@ -56,7 +61,7 @@ function Inventory() {
 
     return (
         <HeaderPanel>
-            <form className={style.container} onSubmit={setInfo}>
+            <form className={style.container} onSubmit={setInfo} autocomplete="off">
                 <div className={style.row}>
                     <Button
                         variant="contained"

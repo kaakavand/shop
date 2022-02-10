@@ -23,6 +23,30 @@ function InventoryList(props) {
         }
     };
 
+    const test = (e) => {
+        if (e.which === 27) {
+            const input = e.target.name;
+            const span = e.target.parentElement.children[0].id;
+            
+            inputs.forEach((item) => {
+                if (input === item.name) {
+                    item.value = "";
+                    item.style.display = "none";
+                    const array = [...inputs];
+                    const test = array.splice(inputs.includes(item) + 1, 1);
+                    e.target.parentElement.children[0].style.display = 'block'
+                    setInputs(array);
+                }
+            });
+
+        }
+    };
+
+    useEffect(() => {
+        props.spanAddToParent(spans);
+        props.inputAddToParent(inputs);
+    }, [spans, inputs]);
+
     useEffect(() => {
         props.gtProducts().then((res) => setProducts(res));
     }, [props]);
@@ -39,15 +63,13 @@ function InventoryList(props) {
         spans.forEach((element) => {
             element.style.display = "block";
         });
-
         props.setArrDisablesButton(true);
     };
 
     const inoutsSet = (e) => {
-        inputs.push(e.target.parentElement.children[1]);
-        spans.push(e.target.parentElement.children[0]);
-        props.spanAddToParent(spans);
-        props.inputAddToParent(inputs);
+        const target = e.target.parentElement.children;
+        setInputs([...inputs, target[1]]);
+        setSpans([...spans, target[0]]);
     };
 
     return (
@@ -76,6 +98,7 @@ function InventoryList(props) {
                                 name_product={item.firstName}
                                 id={item.id}
                                 addTag={inoutsSet}
+                                changEsc={test}
                             />
                         ))}
                 </tbody>
