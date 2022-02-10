@@ -1,32 +1,88 @@
 import React from "react";
-import { useRef } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { getOrders } from "redux/action/orders.action";
 import OrderRow from "./OrderRow.component";
+import style from "../orders.module.scss";
 
-function OrderList() {
+function OrderList(props) {
+    const [order, setOrder] = useState([]);
 
+    const [page, setPage] = useState(1);
+    const NumberOfItems = 5;
+    const numberOfPage = Math.ceil(order.length / NumberOfItems);
+    const numberOfPageArray = [];
 
-    const edit = (e) => {
-        e.target.children[0].style.display = "none";
-        e.target.children[1].style.display = "block";
+    for (let i = 1; i < numberOfPage + 1; i++) {
+        numberOfPageArray.push(i);
+    }
+
+    const changePage = (e) => {
+        setPage(Number(e.target.value));
     };
 
+    useEffect(() => {
+        props
+            .gtOrders()
+            .then((res) =>
+                setOrder(res.filter((item) => item.deliverd === true))
+            );
+    }, [props]);
+
+    console.log(order);
     return (
-        <table>
-            <tr>
-                <th></th>
-                <th>زمان ثبت سفارش</th>
-                <th>مجموع قیمت</th>
-                <th>نام کاربر</th>
-            </tr>
-            <OrderRow
-                editAmount={edit}
-                editPrice={edit}
-                price="21"
-                amount="120"
-                name_product="iphone 13"
-            />
-        </table>
+        <>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>زمان ثبت سفارش</th>
+                        <th>مجموع قیمت</th>
+                        <th>نام کاربر</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {order
+                        .slice(
+                            page * NumberOfItems - NumberOfItems,
+                            page * NumberOfItems
+                        )
+                        .map((item) => (
+                            <OrderRow
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                price={item.totalPrice}
+                                orderSubmit={item.orderSubmit}
+                                amount="120"
+                                name_product="iphone 13"
+                            />
+                        ))}
+                </tbody>
+            </table>
+            <ul>
+                {numberOfPageArray.map((item) => (
+                    <button
+                        key={item}
+                        value={item}
+                        onClick={changePage}
+                        className={item == page ? style.active : null}
+                    >
+                        {item}
+                    </button>
+                ))}
+            </ul>
+        </>
     );
 }
 
-export default OrderList;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        gtOrders: () => dispatch(getOrders()),
+    };
+};
+
+const OderListRed = connect(null, mapDispatchToProps)(OrderList);
+
+export default OderListRed;

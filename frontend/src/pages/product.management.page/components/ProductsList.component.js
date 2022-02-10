@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import React from "react";
 import style from "../productManage.module.scss";
 import ProductRow from "./ProductRow.component";
@@ -6,9 +5,7 @@ import { connect } from "react-redux";
 import { getProducts } from "../../../redux/action/productsRow.action";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getOrders } from "redux/action/orders.action";
-import axios from "axios";
-// import { getOrders } from "redux/action/orders.action";
+
 
 function ProductsList(props) {
     const [products, setProducts] = useState([]);

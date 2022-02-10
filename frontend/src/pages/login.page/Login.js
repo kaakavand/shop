@@ -16,6 +16,7 @@ function Login(props) {
         e.preventDefault();
         const form = new FormData(e.target);
         const data = Object.fromEntries(form);
+        console.log('yes');
         try {
             await props.login(data);
             navigate(PATHS.INVENTORY);

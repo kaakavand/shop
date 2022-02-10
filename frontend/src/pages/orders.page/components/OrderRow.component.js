@@ -4,22 +4,16 @@ import { Button } from "@mui/material";
 
 
 function OrderRow(props) {
-    // const check = (e) => {
-    //     e.target.children[0].style.display = "none";
-    //     e.target.children[1].style.display = "block";
-    //     console.log(e.target.childElementCount);
-    // };
-
     return (
         <tr className={style.t_row} id={props.id}>
             <td onClick={props.editAmount} className={style.amount}>
                 <Button variant="contained" className={style.button}>بررسی سفارش</Button>
             </td>
             <td onClick={props.editPrice} className={style.price}>
-                125
+                {props.orderSubmit}
             </td>
-            <td className={style.name_product}>test</td>
-            <td className={style.name_product}>salam</td>
+            <td className={style.name_product}>{props.price}</td>
+            <td className={style.name_product}>{props.name}</td>
         </tr>
     );
 }
