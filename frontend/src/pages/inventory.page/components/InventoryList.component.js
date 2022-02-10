@@ -13,13 +13,13 @@ function InventoryList(props) {
     const numberOfPage = Math.ceil(products.length / NumberOfItems);
     const numberOfPageArray = [];
 
+    const [spans, setSpans] = useState([]);
+    const [inputs, setInputs] = useState([]);
+
     const edit = (e) => {
         if (e.target.classList.contains("span")) {
             e.target.parentElement.children[0].style.display = "none";
             e.target.parentElement.children[1].style.display = "block";
-        } else {
-            e.target.children[0].style.display = "none";
-            e.target.children[1].style.display = "block";
         }
     };
 
@@ -33,46 +33,61 @@ function InventoryList(props) {
 
     const changePage = (e) => {
         setPage(Number(e.target.value));
+        inputs.forEach((element) => {
+            element.style.display = "none";
+        });
+        spans.forEach((element) => {
+            element.style.display = "block";
+        });
 
-        document.querySelectorAll('input').forEach(element => {
-            element.style.display='none'
-        });
-        document.querySelectorAll('span').forEach(element => {
-            element.style.display='block'
-        });
-        
+        props.setArrDisablesButton(true);
+    };
+
+    const inoutsSet = (e) => {
+        inputs.push(e.target.parentElement.children[1]);
+        spans.push(e.target.parentElement.children[0]);
+        props.spanAddToParent(spans);
+        props.inputAddToParent(inputs);
     };
 
     return (
         <>
             <table>
-                <tr>
-                    <th>موجودی</th>
-                    <th>قیمت</th>
-                    <th>کالا</th>
-                </tr>
-                {products
-                    .slice(
-                        page * NumberOfItems - NumberOfItems,
-                        page * NumberOfItems
-                    )
-                    .map((item) => (
-                        <InventoryRow
-                            editAmount={edit}
-                            editPrice={edit}
-                            price={item.price}
-                            amount={item.count}
-                            name_product={item.firstName}
-                            id={item.id}
-                        />
-                    ))}
+                <thead>
+                    <tr>
+                        <th>موجودی</th>
+                        <th>قیمت</th>
+                        <th>کالا</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products
+                        .slice(
+                            page * NumberOfItems - NumberOfItems,
+                            page * NumberOfItems
+                        )
+                        .map((item) => (
+                            <InventoryRow
+                                key={item.id}
+                                editAmount={edit}
+                                editPrice={edit}
+                                price={item.price}
+                                amount={item.count}
+                                name_product={item.firstName}
+                                id={item.id}
+                                addTag={inoutsSet}
+                            />
+                        ))}
+                </tbody>
             </table>
             <ul>
-                {numberOfPageArray.map((item) => (
+                {numberOfPageArray.map((item, index) => (
                     <button
+                        key={item}
                         value={item}
                         onClick={changePage}
                         className={item == page ? style.active : null}
+                        type="button"
                     >
                         {item}
                     </button>

@@ -1,10 +1,9 @@
-import axios from "axios";
+import http from "../services/http.service";
 
-axios.defaults.baseURL = "http://localhost:3002";
 
 export async function login(data) {
     try {
-        const response = await axios.post("/auth/login", data);
+        const response = await http.post("/auth/login", data);
         return response.data;
     } catch (e) {
         return Promise.reject(e);

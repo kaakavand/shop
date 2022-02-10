@@ -51,11 +51,19 @@ td {
             padding: 0 5px;
             border-radius: 3px;
             border: 2px solid #cfcfcf;
+
+            &:focus {
+                outline: 2px solid #b8b8b8;
+            }
         }
 
         .t_row {
             border-top: 1px solid red;
             box-shadow: #eeeeee 0px -1px 0px 0px;
+        }
+
+        span {
+            cursor: pointer;
         }
     }
 

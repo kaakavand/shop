@@ -15,6 +15,20 @@ td {
     width: 1200px;
     margin: 0 auto;
     margin-top: 40px;
+    
+    .button {
+        font-family: "iransans";
+        background-color: #fb8c00;
+        transition: all ease 0.3s;
+
+        &:hover {
+            background-color: #f08502;
+        }
+    }
+
+    .radio {
+        font-family: 'iransans' !important;
+    }
 
     .row {
         display: flex;
@@ -24,21 +38,21 @@ td {
         border-radius: 5px;
         padding: 10px;
 
-        .button {
-            font-family: "iransans";
-            background-color: #fb8c00;
-        }
     }
 
     table {
         margin-top: 15px;
 
+        .t_row {
+            border-top: 1px solid gray;
+        }
+
         .name_product {
-            width: 800px;
+            width:400px;
         }
 
         .price {
-            width: 200px;
+            width: 300px;
         }
 
         .amount {

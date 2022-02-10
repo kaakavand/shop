@@ -17,14 +17,13 @@ function Login(props) {
         const form = new FormData(e.target);
         const data = Object.fromEntries(form);
         try {
-            const response = await props.login(data);
-            console.log(response.token);
-            localStorage.setItem("isLoggedIn", true);
+            await props.login(data);
             navigate(PATHS.INVENTORY);
         } catch (e) {
             formRef.current.style.boxShadow =
                 "rgbA(244, 67, 54 , 35%) 0 0 5px 0.25rem";
-            // console.log(e);
+                alert('user not found')
+            console.log(e);
         }
     };
 

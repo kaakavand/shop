@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import OrderRow from "./OrderRow.component";
 
-function OrderList() {
+function OrderListEnd() {
 
 
     const edit = (e) => {
@@ -17,6 +17,7 @@ function OrderList() {
                 <th>زمان ثبت سفارش</th>
                 <th>مجموع قیمت</th>
                 <th>نام کاربر</th>
+            test
             </tr>
             <OrderRow
                 editAmount={edit}
@@ -29,4 +30,4 @@ function OrderList() {
     );
 }
 
-export default OrderList;
+export default OrderListEnd;

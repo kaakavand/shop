@@ -1,10 +1,16 @@
 import { Button } from "@mui/material";
 import { HeaderPanel } from "layout";
 import React from "react";
+import { useState } from "react";
 import InventoryList from "./components/InventoryList.component";
 import style from "./inventory.module.scss";
 
 function Inventory() {
+    const [spans, setSpans] = useState([]);
+    const [inputs, setInputs] = useState([]);
+    const [buttonValue, setButton] = useState(true);
+    
+
     const setInfo = (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
@@ -17,7 +23,7 @@ function Inventory() {
             if (data[item]) {
                 if (item.split("_")[0] === "amount") {
                     const amountItem = {
-                        [item]: data[item],
+                        [item.split("_")[0]]: data[item],
                         id: item.split("_")[1],
                     };
                     amount.push(amountItem);
@@ -29,7 +35,7 @@ function Inventory() {
             if (data[item]) {
                 if (item.split("_")[0] === "price") {
                     const priceItem = {
-                        [item]: data[item],
+                        [item.split("_")[0]]: data[item],
                         id: item.split("_")[1],
                     };
                     price.push(priceItem);
@@ -37,15 +43,15 @@ function Inventory() {
             }
         }
 
-        document.querySelectorAll("input").forEach((element) => {
-            element.style.display = "none";
-        });
-        document.querySelectorAll("span").forEach((element) => {
-            element.style.display = "block";
-        });
+        inputs.forEach(element => {element.style.display='none'});
+        spans.forEach(element => {element.style.display='block'});
+        setSpans([])
+        setInputs([])
 
-        console.log(data);
+        console.log(amount);
         console.log(price);
+        setButton(true)
+
     };
 
     return (
@@ -56,12 +62,20 @@ function Inventory() {
                         variant="contained"
                         type="submit"
                         className={style.button}
+                        disabled={buttonValue}
                     >
                         ذخیره
                     </Button>
                     <h3>مدیریت موجودی و کالا ها</h3>
                 </div>
-                <InventoryList />
+                <InventoryList
+                    spanAddToParent={(span) => {
+                        setSpans([...spans , ...span])
+                        setButton(false)
+                    }}
+                    inputAddToParent={(input) => setInputs([...inputs , ...input])}
+                    setArrDisablesButton={(item) => setButton(item)}
+                />
             </form>
         </HeaderPanel>
     );
