@@ -1,8 +1,8 @@
-import { deletProduct, products } from "../../api/products.api";
+import { category } from "api/categoty.api";
 
-export const getProducts = (pageNum) => {
+export const getCategory = () => {
     return (dispatch, getState) => {
-        return products(pageNum)
+        return category()
             .then((response) => {
                 return response;
             })
@@ -10,4 +10,4 @@ export const getProducts = (pageNum) => {
                 return Promise.reject(error);
             });
     };
-}
+};

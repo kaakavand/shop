@@ -26,9 +26,9 @@ export default function ColorToggleButton() {
             value={alignment}
             exclusive
         >
-            <ToggleButton onClick={changURL} className={style.Button} value={PATHS.PRODUCTS_MANAGE}>کالا ها</ToggleButton>
-            <ToggleButton onClick={changURL} className={style.Button_special} value={PATHS.INVENTORY}>موجودی و قیمت ها</ToggleButton>
             <ToggleButton onClick={changURL} className={style.Button} value={PATHS.ORDERS}>سفارش ها</ToggleButton>
+            <ToggleButton onClick={changURL} className={style.Button_special} value={PATHS.INVENTORY}>موجودی و قیمت ها</ToggleButton>
+            <ToggleButton onClick={changURL} className={style.Button} value={PATHS.PRODUCTS_MANAGE}>کالا ها</ToggleButton>
         </ToggleButtonGroup>
     );
 }

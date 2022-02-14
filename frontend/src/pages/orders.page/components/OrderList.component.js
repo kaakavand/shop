@@ -36,10 +36,10 @@ function OrderList(props) {
             <table>
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>زمان ثبت سفارش</th>
-                        <th>مجموع قیمت</th>
                         <th>نام کاربر</th>
+                        <th>مجموع قیمت</th>
+                        <th>زمان ثبت سفارش</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

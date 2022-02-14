@@ -1,35 +1,35 @@
 import { Button } from "@mui/material";
+import { editInventory, getProductId } from "api/products.api";
 import { HeaderPanel } from "layout";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import InventoryList from "./components/InventoryList.component";
 import style from "./inventory.module.scss";
 
-function Inventory() {
-    const [spans, setSpans] = useState([]);
-    const [inputs, setInputs] = useState([]);
+function Inventory(props) {
     const [buttonValue, setButton] = useState(true);
-    
-    useEffect(() => {
-        setButton(true)
-    }, [])
-    
+    const [first, setfirst] = useState(false);
+
+    const test = (e) => {
+        if (e.target.className.includes("inventory_price")) {
+            setButton(false)
+        }
+    };
 
     const setInfo = (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
         const data = Object.fromEntries(form);
+
         const amount = [];
         const price = [];
 
-
-
         for (const item in data) {
             if (data[item]) {
-                if (item.split("_")[0] === "amount") {
+                if (item.split("_")[1] === "amount") {
                     const amountItem = {
-                        [item.split("_")[0]]: data[item],
-                        id: item.split("_")[1],
+                        [item.split("_")[1]]: data[item],
+                        id: item.split("_")[2],
                     };
                     amount.push(amountItem);
                 }
@@ -38,31 +38,43 @@ function Inventory() {
 
         for (const item in data) {
             if (data[item]) {
-                if (item.split("_")[0] === "price") {
+                if (item.split("_")[1] === "price") {
                     const priceItem = {
-                        [item.split("_")[0]]: data[item],
-                        id: item.split("_")[1],
+                        [item.split("_")[1]]: data[item],
+                        id: item.split("_")[2],
                     };
                     price.push(priceItem);
                 }
             }
         }
 
-        inputs.forEach(element => {element.style.display='none'});
-        spans.forEach(element => {element.style.display='block'});
-        setSpans([])
-        setInputs([])
+        amount.forEach((item) => {
+            const id = item.id;
+            const amount = item.amount;
+            editInventory(id, { count: amount });
+        });
 
-        console.log(amount);
-        console.log(price);
-        setButton(true)
+        price.forEach((item) => {
+            const id = item.id;
+            const price = item.price;
+            console.log(price);
+            editInventory(id, { price: price });
+        });
 
+        setfirst(!first);
+        setButton(true);
     };
 
     return (
         <HeaderPanel>
-            <form className={style.container} onSubmit={setInfo} autocomplete="off">
+            <form
+                className={style.container}
+                onSubmit={setInfo}
+                autocomplete="off"
+                onClick={test}
+            >
                 <div className={style.row}>
+                    <h3>مدیریت موجودی و کالا ها</h3>
                     <Button
                         variant="contained"
                         type="submit"
@@ -71,16 +83,8 @@ function Inventory() {
                     >
                         ذخیره
                     </Button>
-                    <h3>مدیریت موجودی و کالا ها</h3>
                 </div>
-                <InventoryList
-                    spanAddToParent={(span) => {
-                        setSpans([...spans , ...span])
-                        setButton(false)
-                    }}
-                    inputAddToParent={(input) => setInputs([...inputs , ...input])}
-                    setArrDisablesButton={(item) => setButton(item)}
-                />
+                <InventoryList setRender={first} />
             </form>
         </HeaderPanel>
     );

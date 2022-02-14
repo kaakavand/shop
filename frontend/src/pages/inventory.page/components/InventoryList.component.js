@@ -9,98 +9,57 @@ import style from "../inventory.module.scss";
 function InventoryList(props) {
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(1);
-    const NumberOfItems = 5;
-    const numberOfPage = Math.ceil(products.length / NumberOfItems);
-    const numberOfPageArray = [];
+    const [NumberOfItems, setNumberOfItems] = useState(1);
+    const numberOfPage = Math.ceil(NumberOfItems / 5);
+    const [numberOfPageArray, setNumberOfPageArray] = useState([]);
+    const [first, setfirst] = useState(false)
+    const [disable, setDisable] = useState(true);
 
-    const [spans, setSpans] = useState([]);
-    const [inputs, setInputs] = useState([]);
+    // props.setDisble(disable)
 
-    const edit = (e) => {
-        if (e.target.classList.contains("span")) {
-            e.target.parentElement.children[0].style.display = "none";
-            e.target.parentElement.children[1].style.display = "block";
-        }
-    };
-
-    const test = (e) => {
-        if (e.which === 27) {
-            const input = e.target.name;
-            const span = e.target.parentElement.children[0].id;
-            
-            inputs.forEach((item) => {
-                if (input === item.name) {
-                    item.value = "";
-                    item.style.display = "none";
-                    const array = [...inputs];
-                    const test = array.splice(inputs.includes(item) + 1, 1);
-                    e.target.parentElement.children[0].style.display = 'block'
-                    setInputs(array);
-                }
-            });
-
-        }
-    };
 
     useEffect(() => {
-        props.spanAddToParent(spans);
-        props.inputAddToParent(inputs);
-    }, [spans, inputs]);
+        props
+            .gtProducts(page)
+            .then((res) => setProducts(res.slice(0, res.length - 1)));
+        props
+            .gtProducts(page)
+            .then((res) =>
+                setNumberOfItems(Number(res.slice(res.length - 1)[0]))
+            );
+        const array = [];
+        for (let i = 1; i < numberOfPage + 1; i++) {
+            array.push(i);
+        }
 
-    useEffect(() => {
-        props.gtProducts().then((res) => setProducts(res));
-    }, [props]);
+        setfirst(props.setRender)
+        setNumberOfPageArray(array);
+    }, [props, page, NumberOfItems , first]);
 
-    for (let i = 1; i < numberOfPage + 1; i++) {
-        numberOfPageArray.push(i);
-    }
-
-    const changePage = (e) => {
-        setPage(Number(e.target.value));
-        inputs.forEach((element) => {
-            element.style.display = "none";
-        });
-        spans.forEach((element) => {
-            element.style.display = "block";
-        });
-        props.setArrDisablesButton(true);
-    };
-
-    const inoutsSet = (e) => {
-        const target = e.target.parentElement.children;
-        setInputs([...inputs, target[1]]);
-        setSpans([...spans, target[0]]);
-    };
 
     return (
         <>
             <table>
                 <thead>
                     <tr>
-                        <th>موجودی</th>
-                        <th>قیمت</th>
                         <th>کالا</th>
+                        <th>قیمت</th>
+                        <th>موجودی</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {products
-                        .slice(
-                            page * NumberOfItems - NumberOfItems,
-                            page * NumberOfItems
-                        )
-                        .map((item) => (
-                            <InventoryRow
-                                key={item.id}
-                                editAmount={edit}
-                                editPrice={edit}
-                                price={item.price}
-                                amount={item.count}
-                                name_product={item.firstName}
-                                id={item.id}
-                                addTag={inoutsSet}
-                                changEsc={test}
-                            />
-                        ))}
+                    {products.map((item) => (
+                        <InventoryRow
+                            key={item.id}
+                            price={item.price}
+                            amount={item.count}
+                            name_product={item.firstName}
+                            priceId={`price_${item.id}`}
+                            amountId = {`amount_${item.id}`}
+                            count = {item.count}
+                            id={item.id}
+                        />
+                    ))}
                 </tbody>
             </table>
             <ul>
@@ -108,7 +67,7 @@ function InventoryList(props) {
                     <button
                         key={item}
                         value={item}
-                        onClick={changePage}
+                        onClick={(e) => setPage(Number(e.target.value))}
                         className={item == page ? style.active : null}
                         type="button"
                     >
@@ -122,7 +81,7 @@ function InventoryList(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        gtProducts: () => dispatch(getProducts()),
+        gtProducts: (pageNum) => dispatch(getProducts(pageNum)),
     };
 };
 

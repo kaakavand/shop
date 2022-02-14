@@ -18,20 +18,20 @@ const HeaderPanel = (props) => {
         <>
             <div className={style.header_fluid}>
                 <header>
-                    <nav>
-                        <ul>
-                            <button className={style.exit} onClick={exite}>
-                                خروج
-                            </button>
-                            <Link to={PATHS.HOME}>بازگشت به سایت</Link>
-                            <li>
-                                <ColorToggleButton />
-                            </li>
-                        </ul>
-                    </nav>
                     <Link to={PATHS.ORDERS} className={style.logo_box}>
                         <h1>مدیریت فروشگاه</h1>
                     </Link>
+                    <nav>
+                        <ul>
+                            <li>
+                                <ColorToggleButton />
+                            </li>
+                            <Link to={PATHS.HOME}>بازگشت به سایت</Link>
+                            <button className={style.exit} onClick={exite}>
+                                خروج
+                            </button>
+                        </ul>
+                    </nav>
                 </header>
             </div>
             {props.children}

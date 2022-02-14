@@ -7,8 +7,8 @@ import OrderListEnd from "./components/OrderListEnd.component";
 import style from "./orders.module.scss";
 
 function Orders() {
-
-    const [radioValue, setRadio] = useState(true)
+    const [radioValue, setRadio] = useState(true);
+    const [orderInfo , setOrderInfo] = useState(false)
 
     const setInfo = (e) => {
         e.preventDefault();
@@ -21,7 +21,8 @@ function Orders() {
         <HeaderPanel>
             <form className={style.container} onSubmit={setInfo}>
                 <div className={style.row}>
-                    <div>
+                    <h3>مدیریت سفارش ها</h3>
+                    <div style={{marginLeft : '15px'}}>
                         <FormControlLabel
                             value="male"
                             control={<Radio />}
@@ -32,13 +33,13 @@ function Orders() {
                             sx={{
                                 "& .MuiSvgIcon-root": {
                                     fontSize: 20,
-                                    color: '#f08502',
+                                    color: "#f08502",
                                     "&.Mui-checked": {
-                                        color: '#f08502',
+                                        color: "#f08502",
                                     },
                                 },
                             }}
-                            />
+                        />
                         <FormControlLabel
                             value="male"
                             control={<Radio />}
@@ -49,15 +50,14 @@ function Orders() {
                             sx={{
                                 "& .MuiSvgIcon-root": {
                                     fontSize: 20,
-                                    color: '#f08502',
+                                    color: "#f08502",
                                     "&.Mui-checked": {
-                                        color: '#f08502',
+                                        color: "#f08502",
                                     },
                                 },
                             }}
                         />
                     </div>
-                    <h3>مدیریت سفارش ها</h3>
                 </div>
                 {radioValue ? <OrderListEnd /> : <OrderList />}
             </form>
