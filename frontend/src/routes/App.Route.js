@@ -53,7 +53,7 @@ export const AppRoute = () => {
                     element={<PrivateRoute component={<Inventory />} />}
                 />
                 <Route
-                    path={PATHS.PRODUCTS}
+                    path={'/:category'}
                     element={<PublicRoute component={<Products />} />}
                 />
             </Routes>

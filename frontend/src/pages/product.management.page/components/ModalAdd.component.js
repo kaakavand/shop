@@ -31,11 +31,19 @@ function ModalAdd(props) {
                 id: categoryId,
                 name: categoryName,
             },
-            description : data.description
+            description: data.description,
         };
 
-        // upload(thumbnail)
 
+        
+        
+        console.log();
+        
+        // let dataURL = reader.result;
+        // console.log(dataURL);
+        // reader.readAsDataURL(thumbnail[0]);
+        
+        upload(new FileReader(thumbnail[0]))
         // postProduct(dataPost)
     };
 

@@ -11,6 +11,15 @@ export async function products(pageNum) {
     }
 }
 
+export async function getProductFilter() {
+    try {
+        const response = await http.get(`/products`);
+        return response.data;
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
 
 export async function deletProduct(id) {
     try {
@@ -43,6 +52,18 @@ export async function postProduct(data) {
 export async function editInventory(id , data) {
     try {
         const response = await http.patch(`/products/${id}` , data);
+        console.log(response);
+        return response.data;
+    } catch (e) {
+        console.log(e);
+        return Promise.reject(e);
+    }
+}
+
+
+export async function upload(data) {
+    try {
+        const response = await http.post(`/upload` , data);
         console.log(response);
         return response.data;
     } catch (e) {
