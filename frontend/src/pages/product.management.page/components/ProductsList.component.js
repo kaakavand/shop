@@ -32,6 +32,8 @@ function ProductsList(props) {
         setNumberOfPageArray(array);
     }, [props, page, NumberOfItems , test]);
 
+    console.log(products);
+
     return (
         <div className={style.table_box}>
             <table>
@@ -49,7 +51,7 @@ function ProductsList(props) {
                             key={item.id}
                             id={item.id}
                             product={item.firstName}
-                            category={item.category.name}
+                            category={item.name}
                             image={`http://localhost:3002/files/${item.thumbnail}`}
                             removeProduct={(e) => {
                                 deletProduct(e.target.parentElement.id)
