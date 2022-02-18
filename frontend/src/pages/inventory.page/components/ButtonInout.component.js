@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../inventory.module.scss";
 
 function ButtonInout(props) {
@@ -9,6 +9,14 @@ function ButtonInout(props) {
             setInput(false);
         }
     };
+
+
+    useEffect(() => {
+        if (props.setRender) {
+            setInput(false)
+        }
+    }, [props])
+    
 
     return (
         <td onClick={() => setInput(true)} className={style.price}>

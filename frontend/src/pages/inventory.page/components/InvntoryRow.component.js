@@ -13,6 +13,7 @@ function InventoryRow(props) {
                 placeholder={props.price}
                 name={props.priceId}
                 value={props.price}
+                setRender={props.setRender}
             />
             <td onClick={props.editAmount} className={style.amount}>
                 <ButtonInout
@@ -20,6 +21,7 @@ function InventoryRow(props) {
                     placeholder={props.count}
                     name={props.amountId}
                     value={props.amount}
+                    setRender={props.setRender}
                 />
             </td>
         </tr>

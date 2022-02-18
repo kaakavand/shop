@@ -13,30 +13,28 @@ function InventoryList(props) {
     const numberOfPage = Math.ceil(NumberOfItems / 5);
     const [numberOfPageArray, setNumberOfPageArray] = useState([]);
     const [first, setfirst] = useState(false)
-    const [disable, setDisable] = useState(true);
-
-    // props.setDisble(disable)
 
 
     useEffect(() => {
         props
-            .gtProducts(page)
-            .then((res) => setProducts(res.slice(0, res.length - 1)));
+        .gtProducts(page)
+        .then((res) => setProducts(res.slice(0, res.length - 1)));
         props
-            .gtProducts(page)
-            .then((res) =>
-                setNumberOfItems(Number(res.slice(res.length - 1)[0]))
-            );
+        .gtProducts(page)
+        .then((res) =>
+        setNumberOfItems(Number(res.slice(res.length - 1)[0]))
+        );
         const array = [];
         for (let i = 1; i < numberOfPage + 1; i++) {
             array.push(i);
         }
-
+        
         setfirst(props.setRender)
         setNumberOfPageArray(array);
     }, [props, page, NumberOfItems , first]);
-
-
+    
+    
+    
     return (
         <>
             <table>
@@ -58,6 +56,7 @@ function InventoryList(props) {
                             amountId = {`amount_${item.id}`}
                             count = {item.count}
                             id={item.id}
+                            setRender={props.setRender}
                         />
                     ))}
                 </tbody>

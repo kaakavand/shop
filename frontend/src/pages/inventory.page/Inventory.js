@@ -13,6 +13,7 @@ function Inventory(props) {
     const test = (e) => {
         if (e.target.className.includes("inventory_price")) {
             setButton(false)
+            setfirst(false)
         }
     };
 
@@ -61,7 +62,7 @@ function Inventory(props) {
             editInventory(id, { price: price });
         });
 
-        setfirst(!first);
+        setfirst(true);
         setButton(true);
     };
 
