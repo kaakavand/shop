@@ -64,7 +64,6 @@ export async function editInventory(id , data) {
 export async function upload(data) {
     try {
         const response = await http.post(`/upload` , data);
-        console.log(response);
         return response.data;
     } catch (e) {
         console.log(e);

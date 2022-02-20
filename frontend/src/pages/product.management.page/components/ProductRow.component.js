@@ -11,7 +11,7 @@ function ProductRow(props) {
             <td className={style.name_product}>{props.product}</td>
             <td className={style.name_category}>{props.category}</td>
             <td className={style.button_box} id={props.id}>
-                <Button variant="contained" className={style.edit}>
+                <Button variant="contained" className={style.edit} onClick={(target) => {props.setStateEdit(target)}}>
                     ویرایش
                 </Button>
                 <Button variant="contained" className={style.delet} onClick={props.removeProduct}>

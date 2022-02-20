@@ -6,11 +6,14 @@ import style from "../productManage.module.scss";
 import ButtonThumbnail from "./ButtonThumbnail.component";
 import ButtonUpload from "./ButtonUpload.component";
 import CreatableSingle from "./CreatableSingle.component";
+import FormData from "form-data";
 
 function ModalAdd(props) {
     const [textArea, setTextArea] = useState("");
     const [images, setImages] = useState([]);
     const [thumbnail, setThumbnail] = useState([]);
+    const [arr, setArr] = useState([]);
+    
 
     const addProduct = (e) => {
         e.preventDefault();
@@ -18,46 +21,45 @@ function ModalAdd(props) {
         const data = Object.fromEntries(form);
         const categoryId = data.category.split("_")[1];
         const categoryName = data.category.split("_")[0];
+        let arr = []
 
         const dataPost = {
-            firstName: data.product,
+            name: data.product,
             brand: data.brand,
-            image: images,
-            thumbnail: thumbnail[0],
-            price: "0",
-            count: 0,
-            category: {
-                id: categoryId,
-                name: categoryName,
-            },
+            image: [],
+            thumbnail: "",
+            price: "l",
+            count: "5000",
+            category: categoryName,
+            idCategory: categoryId,
             description: data.description,
+            amount: "520",
         };
 
 
+        (async () => {
+            let formD = new FormData();
+            formD.append("image", thumbnail[0].file);
+            formD.append("name", thumbnail[0].name);
 
-        // (async () => {
-        //     try {
-        //         let formData = new FormData();
-        //         formData.file = thumbnail[0].file
+            await upload(formD).then((res) => {
+                dataPost.thumbnail = res.originalname + "_" + res.filename;
+            });
 
-        //         const response = await Axios({
-        //             method : "post",
-        //             url : "api/upload/file",
-        //             data : formData,
-        //             // headers ; {"Content-Type"}
-        //         })
+            let arr = []
+            await images.forEach((item) => {
+                let formD = new FormData();
+                formD.append("image", item.file);
+                formD.append("name", item.name);
+                upload(formD).then((res) => arr.push(res.originalname + "_" + res.filename))
+            });
 
-        //         console.log(response);
-        //       } catch (error) {
-        //         console.error("error adfasdf");
-        //       }
-        // })()
+            // dataPost.image = arr 
+            console.log(arr);
 
-        // let dataURL = reader.result;
-        // console.log(dataURL);
-        // reader.readAsDataURL(thumbnail[0]);
-        // upload(new FileReader(thumbnail[0]))
-        // postProduct(dataPost)
+            postProduct(dataPost)
+            props.setModalAdd()
+        })();
     };
 
     return (
@@ -69,14 +71,14 @@ function ModalAdd(props) {
                         <span
                             className={style.remover}
                             onClick={props.setModalAdd}
-                        >
+                            >
                             X
                         </span>
                     </div>
                     <ButtonUpload addImagesArr={(value) => setImages(value)} />
                     <ButtonThumbnail
                         addtThumbnail={(value) => setThumbnail(value)}
-                    />
+                        />
 
                     <input name="product" type="text" placeholder="نام کالا" />
                     <input name="brand" type="text" placeholder=" برند" />
