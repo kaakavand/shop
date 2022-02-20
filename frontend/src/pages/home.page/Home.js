@@ -31,7 +31,7 @@ function Home(props) {
                                 .map((productItem) => (
                                     <ProductItem
                                         price={productItem.price}
-                                        product_name={productItem.firstName}
+                                        product_name={productItem.name}
                                         id={productItem.id}
                                     />
                                 ))}

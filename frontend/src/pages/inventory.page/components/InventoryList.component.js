@@ -51,7 +51,7 @@ function InventoryList(props) {
                             key={item.id}
                             price={item.price}
                             amount={item.count}
-                            name_product={item.firstName}
+                            name_product={item.name}
                             priceId={`price_${item.id}`}
                             amountId = {`amount_${item.id}`}
                             count = {item.count}

@@ -50,8 +50,8 @@ function ProductsList(props) {
                         <ProductRow
                             key={item.id}
                             id={item.id}
-                            product={item.firstName}
-                            category={item.name}
+                            product={item.name}
+                            category={item.category}
                             image={`http://localhost:3002/files/${item.thumbnail}`}
                             removeProduct={(e) => {
                                 deletProduct(e.target.parentElement.id)

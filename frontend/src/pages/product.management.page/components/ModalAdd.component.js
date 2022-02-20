@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { postProduct, upload } from "api/products.api";
+import { Axios } from "axios";
 import React, { useEffect, useState } from "react";
 import style from "../productManage.module.scss";
 import ButtonThumbnail from "./ButtonThumbnail.component";
@@ -18,8 +19,6 @@ function ModalAdd(props) {
         const categoryId = data.category.split("_")[1];
         const categoryName = data.category.split("_")[0];
 
-        console.log(thumbnail[0]);
-
         const dataPost = {
             firstName: data.product,
             brand: data.brand,
@@ -35,15 +34,29 @@ function ModalAdd(props) {
         };
 
 
-        
-        
-        console.log();
-        
+
+        // (async () => {
+        //     try {
+        //         let formData = new FormData();
+        //         formData.file = thumbnail[0].file
+
+        //         const response = await Axios({
+        //             method : "post",
+        //             url : "api/upload/file",
+        //             data : formData,
+        //             // headers ; {"Content-Type"}
+        //         })
+
+        //         console.log(response);
+        //       } catch (error) {
+        //         console.error("error adfasdf");
+        //       }
+        // })()
+
         // let dataURL = reader.result;
         // console.log(dataURL);
         // reader.readAsDataURL(thumbnail[0]);
-        
-        upload(new FileReader(thumbnail[0]))
+        // upload(new FileReader(thumbnail[0]))
         // postProduct(dataPost)
     };
 

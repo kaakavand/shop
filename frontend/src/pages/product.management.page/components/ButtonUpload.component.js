@@ -13,8 +13,15 @@ const Input = styled("input")({
 export default function UploadButtons(props) {
     const [images, setImages] = useState([]);
 
+
+
     const imagesSet = (event) => {
-        setImages([...images, event.target.files[0]]);
+        const obj = {
+            name : event.target.files[0].name,
+            input : event.target,
+            file : event.target.files[0]
+        }
+        setImages([...images , obj])
     };
 
     useEffect(() => {
@@ -23,18 +30,15 @@ export default function UploadButtons(props) {
     
 
     const removeIMG = (event) => {
-        event.target.parentElement.remove()
-        const name = event.target.className;
-        let arr;
-        images.forEach((item, index) => {
-            if (item.name === name) {
-                let newState = images;
-                newState.splice(index, 1);
-                arr = newState;
+        const newArr = []
+        images.forEach((item) => {
+            if (event.target.className !== item.name) {
+                newArr.push(item)
             }
         });
-        setImages(arr);
+        setImages(newArr)
     };
+
 
     return (
         <>
@@ -43,6 +47,7 @@ export default function UploadButtons(props) {
                     <label htmlFor="contained-button-file">
                         <Input
                             accept="image/*"
+                            name = 'image'
                             id="contained-button-file"
                             multiple
                             type="file"
@@ -57,7 +62,7 @@ export default function UploadButtons(props) {
                     {images.map((item) => (
                         <figure>
                             <img
-                                src={URL.createObjectURL(item)}
+                                src={URL.createObjectURL(item.file)}
                                 alt={item.name}
                             />
                             <span className={item.name} onClick={removeIMG}>

@@ -16,16 +16,26 @@ export default function ButtonThumbnail(props) {
     const [thumbnail, setThumbnail] = useState([]);
 
     const imagesSet = (event) => {
-        setThumbnail([event.target.files[0]]);
+        const obj = {
+            name : event.target.files[0].name,
+            input : event.target,
+            file : event.target.files[0]
+        }
+        setThumbnail([obj]);
     };
 
     useEffect(() => {
-        props.addtThumbnail(thumbnail)
-    }, [thumbnail])
-    
+        props.addtThumbnail(thumbnail);
+    }, [thumbnail]);
 
-    const removeIMG = () => {
-        setThumbnail([]);
+    const removeIMG = (event) => {
+        const newArr = []
+        thumbnail.forEach((item) => {
+            if (event.target.className !== item.name) {
+                newArr.push(item)
+            }
+        });
+        setThumbnail(newArr);
     };
 
     return (
@@ -38,6 +48,7 @@ export default function ButtonThumbnail(props) {
                             id="icon-button-file"
                             type="file"
                             onChange={imagesSet}
+                            name='image'
                         />
                         <IconButton
                             color="primary"
@@ -55,7 +66,7 @@ export default function ButtonThumbnail(props) {
                     {thumbnail.map((item) => (
                         <figure>
                             <img
-                                src={URL.createObjectURL(item)}
+                                src={URL.createObjectURL(item.file)}
                                 alt={item.name}
                             />
                             <span className={item.name} onClick={removeIMG}>
