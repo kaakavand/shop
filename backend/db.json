@@ -1,5 +1,23 @@
 {
-  "products": [],
+  "products": [
+    {
+      "name": "iphone 13 pro",
+      "brand": "apple",
+      "image": [
+        "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4",
+        "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4"
+      ],
+      "thumbnail": "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4",
+      "price": "25,000,000",
+      "count": "3",
+      "category": "Mobile",
+      "idCategory": "16",
+      "description": "tes",
+      "amount": "520",
+      "createdAt": 1645426111395,
+      "id": 1
+    }
+  ],
   "category": [
     {
       "id": 14,
