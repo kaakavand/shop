@@ -1,0 +1,119 @@
+
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 15px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+        rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    padding: 5px;
+    border-radius: 5px;
+
+    .main_content {
+        display: flex;
+
+        .img_box {
+            width: 380px;
+
+            figure {
+                width: 315px;
+                height: 315px;
+                border-radius: 5px;
+                img {
+                    width: 100% !important;
+                    height: 100% !important;
+                }
+            }
+
+            .galery {
+                margin-top: 10px;
+                display: flex;
+                width: 330px;
+                flex-wrap: wrap;
+
+                figure {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 3px;
+                    margin-left: 10px;
+                    margin-bottom: 10px;
+                    background-color: blue;
+
+                    img {
+                        width: 100% !important;
+                        height: 100% !important;
+                    }
+                }
+            }
+        }
+
+        .info_box {
+            width: 400px;
+
+            h1 {
+                color: #072227;
+                margin-top: 50px;
+            }
+            h3 {
+                color: #072227;
+
+                a {
+                    color: #072227;
+                    text-decoration: none;
+                }
+            }
+
+            p {
+                font-size: 29px;
+                font-weight: bold;
+                color: #f44336;
+                margin-top: 30px;
+            }
+
+            .counter {
+                input {
+                    height: 30px;
+                    width: 50px;
+                    text-align: center;
+                    outline: none;
+                    border: 1px solid #fff;
+                }
+                button {
+                    height: 30px;
+                    width: 30px;
+                    color: #f44336;
+                    background: #ffdbd8;
+                    font-weight: bold;
+                    border: none;
+                    border: 1px solid #f44336;
+                    cursor: pointer;
+                }
+            }
+            .cartAdd {
+                padding: 5px 10px;
+                font-family: "iransans";
+                border-radius: 3px;
+                color: #fff;
+                border: 1px solid #7cb342;
+                background: #7cb342;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+        }
+    }
+    p {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}

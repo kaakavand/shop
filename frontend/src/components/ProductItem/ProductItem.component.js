@@ -1,8 +1,18 @@
 import React from "react";
 import style from "../component.module.scss";
 import logo from "../../assets/img/logo.png";
+import { useNavigate } from "react-router-dom";
 
 function ProductItem(props) {
+
+    const navigate = useNavigate()
+
+    const navigateProduct = (e) => {
+        const id = e.target.parentElement.id
+        const category = e.target.className
+        navigate(`/${category}/${id}`)
+    }
+
     return (
         <div className={style.product_item} id={props.id}>
             <div className={style.item_box}>
@@ -14,6 +24,7 @@ function ProductItem(props) {
                     <h3>{props.price} تومان</h3>
                 </div>
             </div>
+            <button className={props.category} onClick={navigateProduct}>مشاهده محصول</button>
         </div>
     );
 }

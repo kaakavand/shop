@@ -8,6 +8,7 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    position: relative;
 
     .item_box {
         display: flex;
@@ -40,5 +41,23 @@
             }
         }
         
+    }
+
+    button {
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        padding: 3px 5px;
+        font-family: 'iransans';
+        cursor: pointer;
+        color: #F44336;
+        border: 1px solid #F44336;
+        background: none;
+        border-radius: 3px;
+        transition: all ease 0.3s;
+
+        &:hover {
+            background: #fff6f5;
+        }
     }
 }

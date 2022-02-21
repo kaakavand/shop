@@ -11,7 +11,7 @@ function Inventory(props) {
     const [first, setfirst] = useState(false);
 
     const test = (e) => {
-        if (e.target.className.includes("inventory_price")) {
+        if (e.target.className.includes("inventory_price") || e.target.className.includes('span')) {
             setButton(false)
             setfirst(false)
         }

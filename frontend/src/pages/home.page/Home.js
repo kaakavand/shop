@@ -33,6 +33,7 @@ function Home(props) {
                                         price={productItem.price}
                                         product_name={productItem.name}
                                         id={productItem.id}
+                                        category={productItem.category}
                                     />
                                 ))}
                         </div>

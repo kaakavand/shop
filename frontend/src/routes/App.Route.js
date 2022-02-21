@@ -29,7 +29,7 @@ export const AppRoute = () => {
                     element={<PublicRoute component={<Home />} />}
                 />
                 <Route
-                    path={PATHS.PRODUCT}
+                    path={'/:category/:id'}
                     element={<PublicRoute component={<Product />} />}
                 />
                 <Route
