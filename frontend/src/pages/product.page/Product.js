@@ -1,7 +1,7 @@
 import { Header } from "layout";
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { gtProductId } from "redux/action/productId.action";
 import style from "./product.module.scss";
 
@@ -10,12 +10,26 @@ function Product(props) {
     const [first, setfirst] = useState({});
     const [number, setNumber] = useState(1);
     const [flag, setFlag] = useState(false);
+    const [flagCart, setFlagCart] = useState(true);
 
+    const navigate = useNavigate()
     const params = useParams();
 
     useEffect(() => {
         props.gtProduct(params.id).then((res) => setfirst(res));
-    }, []);
+    }, [flagCart]);
+
+    useEffect(() => {
+        if (JSON.parse(localStorage.getItem('cart_item'))) {
+            JSON.parse(localStorage.getItem('cart_item')).forEach(item => {
+                if (item.id === params.id) {
+                    setFlagCart(false)
+                }
+                console.log(item);
+            });
+        }
+    }, [flagCart]);
+
 
     console.log(first);
 
@@ -34,7 +48,7 @@ function Product(props) {
             setFlag(!flag);
         }
     };
-    
+
     const addToCart = () => {
         const obj = {
             price: first.price,
@@ -56,7 +70,8 @@ function Product(props) {
             localStorage.setItem("cart_item", JSON.stringify(arr));
         }
         setFlag(!flag);
-        setNumber(1)
+        setFlagCart(false)
+        setNumber(1);
     };
 
     return (
@@ -98,14 +113,33 @@ function Product(props) {
                             </Link>
                         </h3>
                         <p>{first.price} تومان</p>
-                        <div className={style.counter}>
-                            <button onClick={counterSum}>+</button>
-                            <input type="number" value={number} ref={ref} />
-                            <button onClick={counterSub}>-</button>
-                        </div>
-                        <button className={style.cartAdd} onClick={addToCart}>
-                            افزودن به سبد خرید
-                        </button>
+                        {flagCart ? (
+                            <>
+                                <div className={style.counter}>
+                                    <button onClick={counterSum}>+</button>
+                                    <input
+                                        type="number"
+                                        value={number}
+                                        ref={ref}
+                                    />
+                                    <button onClick={counterSub}>-</button>
+                                </div>
+                                <button
+                                    className={style.cartAdd}
+                                    onClick={addToCart}
+                                >
+                                    افزودن به سبد خرید
+                                </button>
+                            </>
+                        ) : (
+                            <button
+                                className={style.cartAdd}
+                                onClick={() => navigate('/cart')}
+                                style={{background : '#ffdad8' , color : '#f44336' , border : '1px solid #ffdad8'}}
+                            >
+                                مشاهده سبد خرید
+                            </button>
+                        )}
                     </div>
                 </div>
                 <p>{first.description}</p>

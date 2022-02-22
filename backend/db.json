@@ -8,14 +8,28 @@
         "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4"
       ],
       "thumbnail": "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4",
-      "price": "25,000,000",
-      "count": "3",
+      "price": "2000000",
+      "count": "10",
       "category": "Mobile",
       "idCategory": "16",
       "description": "tes",
       "amount": "520",
       "createdAt": 1645426111395,
       "id": 1
+    },
+    {
+      "name": "asus k570",
+      "brand": "asus",
+      "image": [],
+      "thumbnail": "l2.jpg_b3417a88e4cd21d5046f62f584627990",
+      "price": "5000000",
+      "count": "5",
+      "category": "Laptop",
+      "idCategory": "14",
+      "description": "",
+      "amount": "520",
+      "createdAt": 1645508695851,
+      "id": 2
     }
   ],
   "category": [

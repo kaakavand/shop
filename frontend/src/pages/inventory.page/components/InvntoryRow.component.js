@@ -15,15 +15,15 @@ function InventoryRow(props) {
                 value={props.price}
                 setRender={props.setRender}
             />
-            <td onClick={props.editAmount} className={style.amount}>
-                <ButtonInout
-                    setValueNutton={(value) => setValueButton(value)}
-                    placeholder={props.count}
-                    name={props.amountId}
-                    value={props.amount}
-                    setRender={props.setRender}
-                />
-            </td>
+            {/* <td onClick={props.editAmount} className={style.amount}> */}
+            <ButtonInout
+                setValueNutton={(value) => setValueButton(value)}
+                placeholder={props.count}
+                name={props.amountId}
+                value={props.amount}
+                setRender={props.setRender}
+            />
+            {/* </td> */}
         </tr>
     );
 }
