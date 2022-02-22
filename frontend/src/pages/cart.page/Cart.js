@@ -10,21 +10,27 @@ function Cart(props) {
     const [price, setPrice] = useState(0);
     const [flag, setFlag] = useState(false);
     const ref = useRef();
+    const tbody = useRef();
 
     useEffect(() => {
         setfirst(JSON.parse(localStorage.getItem("cart_item")));
     }, [props, flag]);
-
+    
     useEffect(() => {
         let sum = 0;
         if (first) {
             first.forEach((item) => {
                 sum += Number(item.number) * Number(item.price);
             });
+            if (!tbody.current.children.length) {
+                setfirst(null)
+                console.log(tbody.current.children.length);
+            }
         }
         setPrice(sum);
-    }, [first, flag]);
 
+    }, [first, flag]);
+    
     const setSum = async (e) => {
         let num;
         const id = Number(e.target.className);
@@ -54,7 +60,6 @@ function Cart(props) {
     const setSub = async (e) => {
         let num = 1;
         const id = Number(e.target.className);
-        // await props.gtProduct(id).then((res) => (num = res.count));
 
         if (+e.target.parentElement.querySelector("input").value > 1) {
             console.log(e.target.parentElement.querySelector("input").value);
@@ -76,6 +81,18 @@ function Cart(props) {
         }
     };
 
+    const remove = (e) => {
+        let id = e.target.className;
+        const arr = [];
+        JSON.parse(localStorage.getItem("cart_item")).forEach((item) => {
+            if (item.id !== id) {
+                arr.push(item);
+            }
+        });
+        localStorage.setItem("cart_item", JSON.stringify(arr));
+        setFlag(!flag)
+    };
+
     return (
         <Header showCars="none">
             <div className={style.container}>
@@ -91,7 +108,7 @@ function Cart(props) {
                                 <th className={style.count}>تعداد</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody ref={tbody}>
                             {first.map((item) => (
                                 <tr>
                                     <th className={style.name}>{item.name}</th>
@@ -118,6 +135,12 @@ function Cart(props) {
                                                 -
                                             </button>
                                         </div>
+                                        <button
+                                            className={item.id}
+                                            onClick={remove}
+                                        >
+                                            حذف
+                                        </button>
                                     </th>
                                 </tr>
                             ))}
@@ -132,6 +155,7 @@ function Cart(props) {
                         variant="contained"
                         type="submit"
                         className={style.button}
+                        disabled = {first ? false : true}
                     >
                         نهایی کردن سبد خرید
                     </Button>
