@@ -25,6 +25,14 @@
                     color: #072227;
                     transition: all ease 0.3s;
 
+                    h5 {
+                        color: #f44336;
+                        background: #ffdad8;
+                        padding: 2px 5px;
+                        border-radius: 3px;
+                        margin: 0 5px;
+                    }
+
                     &:hover {
                         color: #35858b;
                         box-shadow: rgb(53, 133, 139) 0px 2px 0px 0px;
@@ -38,7 +46,6 @@
         }
 
         .logo_box {
-
             display: flex;
             align-items: center;
             text-decoration: none;

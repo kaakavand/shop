@@ -1,16 +1,20 @@
 import { Header } from "layout";
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { gtProductId } from "redux/action/productId.action";
 import style from "./product.module.scss";
 
 function Product(props) {
     const ref = useRef();
     const [first, setfirst] = useState({});
+    const [number, setNumber] = useState(1);
+    const [flag, setFlag] = useState(false);
+
+    const params = useParams();
 
     useEffect(() => {
-        props.gtProduct("1").then((res) => setfirst(res));
+        props.gtProduct(params.id).then((res) => setfirst(res));
     }, []);
 
     console.log(first);
@@ -18,19 +22,45 @@ function Product(props) {
     const counterSum = () => {
         let value = +ref.current.value;
         if (value < +first.count) {
-            ref.current.value = value + 1;
+            setNumber(number + 1);
+            setFlag(!flag);
         }
     };
 
     const counterSub = () => {
         let value = +ref.current.value;
         if (value > 1) {
-            ref.current.value = value - 1;
+            setNumber(number - 1);
+            setFlag(!flag);
         }
+    };
+    
+    const addToCart = () => {
+        const obj = {
+            price: first.price,
+            number: number,
+            name: first.name,
+            id: params.id,
+        };
+
+        let ls = JSON.parse(localStorage.getItem("cart_item"));
+        let arr;
+
+        if (ls) {
+            arr = JSON.parse(localStorage.getItem("cart_item"));
+            arr.push(obj);
+            localStorage.setItem("cart_item", JSON.stringify(arr));
+        } else {
+            arr = [];
+            arr.push(obj);
+            localStorage.setItem("cart_item", JSON.stringify(arr));
+        }
+        setFlag(!flag);
+        setNumber(1)
     };
 
     return (
-        <Header>
+        <Header flag={flag}>
             <div className={style.container}>
                 <div className={style.main_content}>
                     <div className={style.img_box}>
@@ -70,10 +100,10 @@ function Product(props) {
                         <p>{first.price} تومان</p>
                         <div className={style.counter}>
                             <button onClick={counterSum}>+</button>
-                            <input type="number" value={1} ref={ref} />
+                            <input type="number" value={number} ref={ref} />
                             <button onClick={counterSub}>-</button>
                         </div>
-                        <button className={style.cartAdd}>
+                        <button className={style.cartAdd} onClick={addToCart}>
                             افزودن به سبد خرید
                         </button>
                     </div>
