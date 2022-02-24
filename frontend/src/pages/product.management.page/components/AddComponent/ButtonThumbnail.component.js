@@ -3,17 +3,17 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
-import style from "../productManage.module.scss";
+import style from "../../productManage.module.scss";
+import { IconButton } from "@mui/material";
+import { PhotoCamera } from "@mui/icons-material";
 import { useEffect } from "react";
 
 const Input = styled("input")({
     display: "none",
 });
 
-export default function UploadButtons(props) {
-    const [images, setImages] = useState([]);
-
-
+export default function ButtonThumbnail(props) {
+    const [thumbnail, setThumbnail] = useState([]);
 
     const imagesSet = (event) => {
         const obj = {
@@ -21,45 +21,49 @@ export default function UploadButtons(props) {
             input : event.target,
             file : event.target.files[0]
         }
-        setImages([...images , obj])
+        setThumbnail([obj]);
     };
 
     useEffect(() => {
-        props.addImagesArr(images)
-    }, [images])
-    
+        props.addtThumbnail(thumbnail);
+    }, [thumbnail]);
 
     const removeIMG = (event) => {
         const newArr = []
-        images.forEach((item) => {
+        thumbnail.forEach((item) => {
             if (event.target.className !== item.name) {
                 newArr.push(item)
             }
         });
-        setImages(newArr)
+        setThumbnail(newArr);
     };
-
 
     return (
         <>
-            <div className={style.row_images}>
+            <div className={style.row_thumbnail}>
                 <Stack direction="row" alignItems="center" spacing={2}>
-                    <label htmlFor="contained-button-file">
+                    <label htmlFor="icon-button-file">
                         <Input
                             accept="image/*"
-                            name = 'image'
-                            id="contained-button-file"
-                            multiple
+                            id="icon-button-file"
                             type="file"
                             onChange={imagesSet}
+                            name='image'
                         />
-                        <Button variant="contained" component="span">
-                            تصاویر
-                        </Button>
+                        <IconButton
+                            color="primary"
+                            aria-label="upload picture"
+                            component="span"
+                        >
+                            <PhotoCamera />
+                        </IconButton>
                     </label>
                 </Stack>
-                <div style={{ display: "flex" }}>
-                    {images.map((item) => (
+                <div
+                    className={style.thumbnail_box}
+                    style={{ display: "flex" }}
+                >
+                    {thumbnail.map((item) => (
                         <figure>
                             <img
                                 src={URL.createObjectURL(item.file)}

@@ -8,7 +8,7 @@
         "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4"
       ],
       "thumbnail": "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4",
-      "price": "2000000",
+      "price": "1000",
       "count": "10",
       "category": "Mobile",
       "idCategory": "16",
@@ -16,6 +16,38 @@
       "amount": "520",
       "createdAt": 1645426111395,
       "id": 1
+    },
+    {
+      "name": "test",
+      "brand": "apple",
+      "image": [
+        "l2.jpg_7af2014bcc3d6e34b72100dd21bd608f",
+        "l1.jpg_d9d06bea5256af16133bc036d8c0a873"
+      ],
+      "thumbnail": "resume.jpg_0edd04301d903eb83d53a84c6d29beab",
+      "price": "0",
+      "count": "5000",
+      "category": "Laptop",
+      "idCategory": "14",
+      "description": "",
+      "amount": "520",
+      "createdAt": 1645691082577,
+      "id": 2
+    },
+    {
+      "name": "test",
+      "brand": "apple",
+      "image": [
+        "axios.png_cf43ceae6aa3e3c3fd49a86d3b89cf99"
+      ],
+      "thumbnail": "resume.jpg_f6a909b3d7aba01dafe64c53bdfd7143",
+      "price": "0",
+      "count": "5000",
+      "category": "category",
+      "description": "",
+      "amount": "520",
+      "createdAt": 1645691338946,
+      "id": 3
     }
   ],
   "category": [

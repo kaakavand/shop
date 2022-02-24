@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { postProduct, upload } from "api/products.api";
 import { Axios } from "axios";
 import React, { useEffect, useState } from "react";
-import style from "../productManage.module.scss";
+import style from "../../productManage.module.scss";
 import ButtonThumbnail from "./ButtonThumbnail.component";
 import ButtonUpload from "./ButtonUpload.component";
 import CreatableSingle from "./CreatableSingle.component";
@@ -13,7 +13,13 @@ function ModalAdd(props) {
     const [images, setImages] = useState([]);
     const [thumbnail, setThumbnail] = useState([]);
     const [arr, setArr] = useState([]);
-    
+    const [res, setRes] = useState([]);
+
+    console.log(thumbnail);
+
+    useEffect(() => {
+        setRes([...res, ...arr]);
+    }, [arr]);
 
     const addProduct = (e) => {
         e.preventDefault();
@@ -21,21 +27,20 @@ function ModalAdd(props) {
         const data = Object.fromEntries(form);
         const categoryId = data.category.split("_")[1];
         const categoryName = data.category.split("_")[0];
-        let arr = []
+        // let arr = []
 
         const dataPost = {
             name: data.product,
             brand: data.brand,
-            image: [],
+            image: images,
             thumbnail: "",
-            price: "l",
+            price: "0",
             count: "5000",
             category: categoryName,
             idCategory: categoryId,
             description: data.description,
             amount: "520",
         };
-
 
         (async () => {
             let formD = new FormData();
@@ -45,20 +50,8 @@ function ModalAdd(props) {
             await upload(formD).then((res) => {
                 dataPost.thumbnail = res.originalname + "_" + res.filename;
             });
-
-            let arr = []
-            await images.forEach((item) => {
-                let formD = new FormData();
-                formD.append("image", item.file);
-                formD.append("name", item.name);
-                upload(formD).then((res) => arr.push(res.originalname + "_" + res.filename))
-            });
-
-            // dataPost.image = arr 
-            console.log(arr);
-
-            postProduct(dataPost)
-            props.setModalAdd()
+            postProduct(dataPost);
+            props.setModalAdd();
         })();
     };
 
@@ -71,14 +64,14 @@ function ModalAdd(props) {
                         <span
                             className={style.remover}
                             onClick={props.setModalAdd}
-                            >
+                        >
                             X
                         </span>
                     </div>
                     <ButtonUpload addImagesArr={(value) => setImages(value)} />
                     <ButtonThumbnail
                         addtThumbnail={(value) => setThumbnail(value)}
-                        />
+                    />
 
                     <input name="product" type="text" placeholder="نام کالا" />
                     <input name="brand" type="text" placeholder=" برند" />

@@ -114,6 +114,31 @@ td {
         padding: 10px 15px;
         border-radius: 5px;
 
+        .row2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: none;
+
+            h2 {
+                font-size: 18px;
+            }
+
+            .remover {
+                color: #fff;
+                background-color: #f44336;
+                padding: 3px 8px 2px 8px;
+                font-size: 12px;
+                border-radius: 3px;
+                cursor: pointer;
+                transition: all ease 0.3s;
+
+                &:hover {
+                    background-color: #da3328;
+                }
+            }
+        }
+
         .row,
         .row_images {
             display: flex;
@@ -240,7 +265,7 @@ td {
             outline: none;
             margin-top: 10px;
         }
-        
+
         textarea {
             border: 1px solid #dbdbdb;
             margin-top: 10px;
@@ -255,10 +280,10 @@ td {
 
     .button {
         width: 100%;
-        font-family: 'iransans';
+        font-family: "iransans";
     }
 }
 
 span {
-    font-family: 'iransans'!important;
+    font-family: "iransans" !important;
 }

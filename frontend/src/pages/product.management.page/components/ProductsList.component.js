@@ -6,7 +6,8 @@ import { getProducts } from "../../../redux/action/productsRow.action";
 import { useState } from "react";
 import { useEffect } from "react";
 import { deletProduct } from "api/products.api";
-import ModalAdd from "./ModalAdd.component";
+import ModalAdd from "./AddComponent/ModalAdd.component";
+import EditModal from "./EditComponent/EditModal.component";
 
 function ProductsList(props) {
     const [products, setProducts] = useState([]);
@@ -17,6 +18,7 @@ function ProductsList(props) {
     const [first, setfirst] = useState(false);
     const [id, setId] = useState(false);
     const [test, setTest] = useState(true);
+    const [editModal, setEditModal] = useState(false);
 
     useEffect(() => {
         props
@@ -58,15 +60,19 @@ function ProductsList(props) {
                                 }`}
                                 setStateEdit={(e) => {
                                     if (e.target.parentElement.id) {
-                                        setfirst(true);
-                                        setId(e.target.parentElement.id);
+                                        setEditModal(true)
+                                        setId(e.target.parentElement.id)
                                     }
                                 }}
                                 removeProduct={(e) => {
                                     deletProduct(e.target.parentElement.id);
                                     setTest(!test);
-                                    if (e.target.parentElement.parentElement.parentElement.children.length == '1') {
-                                        setPage(page - 1)
+                                    if (
+                                        e.target.parentElement.parentElement
+                                            .parentElement.children.length ==
+                                        "1"
+                                    ) {
+                                        setPage(page - 1);
                                     }
                                 }}
                             />
@@ -87,9 +93,8 @@ function ProductsList(props) {
                     ))}
                 </ul>
             </div>
-            {first ? (
-                <ModalAdd id={id} flag={true} setModalAdd={() => setfirst(false)} />
-            ) : null}
+            {first ? <ModalAdd setModalAdd={() => setfirst(false)} /> : null}
+            {editModal ? <EditModal id={id} setModalEdit={() => setEditModal(false)} /> : null}
         </>
     );
 }

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import style from './productManage.module.scss'
 import Button from '@mui/material/Button'
 import ProductsList from './components/ProductsList.component';
-import ModalAdd from './components/ModalAdd.component';
+import ModalAdd from './components/AddComponent/ModalAdd.component';
 
 function ProductManag() {
 

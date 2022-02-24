@@ -3,39 +3,52 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
-import style from "../productManage.module.scss";
+import style from "../../productManage.module.scss";
 import { IconButton } from "@mui/material";
 import { PhotoCamera } from "@mui/icons-material";
 import { useEffect } from "react";
+import { connect } from "react-redux";
+import { gtProductId } from "redux/action/productId.action";
+import { upload } from "api/products.api";
 
 const Input = styled("input")({
     display: "none",
 });
 
-export default function ButtonThumbnail(props) {
+function ButtonThumbnail(props) {
     const [thumbnail, setThumbnail] = useState([]);
 
-    const imagesSet = (event) => {
-        const obj = {
-            name : event.target.files[0].name,
-            input : event.target,
-            file : event.target.files[0]
-        }
-        setThumbnail([obj]);
-    };
+    const [id, setId] = useState(false);
+
+    useEffect(() => {
+        setId(props.id);
+    }, [props]);
 
     useEffect(() => {
         props.addtThumbnail(thumbnail);
     }, [thumbnail]);
 
-    const removeIMG = (event) => {
-        const newArr = []
-        thumbnail.forEach((item) => {
-            if (event.target.className !== item.name) {
-                newArr.push(item)
-            }
+    useEffect(() => {
+        if (id) {
+            props
+                .gtProduct(id)
+                .then((res) => setThumbnail([...thumbnail, res.thumbnail]));
+        }
+    }, [id]);
+
+
+    const imagesSet = async (event) => {
+        let formD = new FormData();
+        formD.append("image", event.target.files[0]);
+        formD.append("name", event.target.files[0].name);
+        await upload(formD).then((res) => {
+            const data = res.originalname + "_" + res.filename;
+            setThumbnail([data]);
         });
-        setThumbnail(newArr);
+    };
+
+    const removeIMG = (event) => {
+        setThumbnail([]);
     };
 
     return (
@@ -48,7 +61,7 @@ export default function ButtonThumbnail(props) {
                             id="icon-button-file"
                             type="file"
                             onChange={imagesSet}
-                            name='image'
+                            name="image"
                         />
                         <IconButton
                             color="primary"
@@ -66,10 +79,15 @@ export default function ButtonThumbnail(props) {
                     {thumbnail.map((item) => (
                         <figure>
                             <img
-                                src={URL.createObjectURL(item.file)}
-                                alt={item.name}
+                                src={`http://localhost:3002/files/${
+                                    item.split("_")[1]
+                                }`}
+                                alt={item.split("_")[0]}
                             />
-                            <span className={item.name} onClick={removeIMG}>
+                            <span
+                                className={item.split("_")[0]}
+                                onClick={removeIMG}
+                            >
                                 x
                             </span>
                         </figure>
@@ -79,3 +97,13 @@ export default function ButtonThumbnail(props) {
         </>
     );
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        gtProduct: (id) => dispatch(gtProductId(id)),
+    };
+};
+
+const ButtonThumbnailRed = connect(null, mapDispatchToProps)(ButtonThumbnail);
+
+export default ButtonThumbnailRed;
