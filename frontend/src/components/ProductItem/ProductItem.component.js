@@ -17,7 +17,7 @@ function ProductItem(props) {
         <div className={style.product_item} id={props.id}>
             <div className={style.item_box}>
                 <figure>
-                    <img src={logo} alt="" />
+                    <img src={`http://localhost:3002/files/${props.img}`} alt="" />
                 </figure>
                 <div className={style.info_product}>
                     <h2>{props.product_name}</h2>

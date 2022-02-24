@@ -9,25 +9,58 @@ import style from "./product.module.scss";
 function Products(props) {
     const params = useParams();
     const [first, setfirst] = useState([]);
+    console.log(params);
+
+    const [page, setPage] = useState(1);
+    const NumberOfItems = 6;
+    const numberOfPage = Math.ceil(first.length / NumberOfItems);
+    const numberOfPageArray = [];
+
+    for (let i = 1; i < numberOfPage + 1; i++) {
+        numberOfPageArray.push(i);
+    }
+
+    const changePage = (e) => {
+        setPage(Number(e.target.value));
+    };
 
     useEffect(() => {
-        props.gtProductFilter().then((res) => setfirst(res));
+        props.gtProductFilter(params.category).then((res) => setfirst(res));
     }, [props]);
 
-    console.log(params.category);
     return (
         <Header>
             <div className={style.container}>
                 <h1>{params.category}</h1>
                 <div className={style.row}>
-                    {first.filter(item => item.category === params.category).map((productItem) => (
-                        <ProductItem
-                            price={productItem.price}
-                            product_name={productItem.firstName}
-                            id={productItem.id}
-                        />
-                    ))}
+                    {first
+                        .slice(
+                            page * NumberOfItems - NumberOfItems,
+                            page * NumberOfItems
+                        )
+                        .map((productItem) => (
+                            <ProductItem
+                                price={productItem.price}
+                                product_name={productItem.name}
+                                id={productItem.id}
+                                category={productItem.category}
+                                img={productItem.thumbnail.split('_')[1]}
+
+                            />
+                        ))}
                 </div>
+                <ul>
+                    {numberOfPageArray.map((item) => (
+                        <button
+                            key={item}
+                            value={item}
+                            onClick={changePage}
+                            className={item == page ? style.active : null}
+                        >
+                            {item}
+                        </button>
+                    ))}
+                </ul>
             </div>
         </Header>
     );

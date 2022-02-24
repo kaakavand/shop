@@ -3,7 +3,10 @@ import { Header } from "layout";
 import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { getCategory } from "redux/action/caregory.action";
-import { getProductsFil } from "redux/action/productFilter.acrion";
+import {
+    getProductsFil,
+    getProductsFilAll,
+} from "redux/action/productFilter.acrion";
 import style from "./home.module.scss";
 import { Link } from "react-router-dom";
 
@@ -16,17 +19,9 @@ function Home(props) {
     useEffect(() => {
         props.gtCategory().then((res) => setCategory(res));
         props.gtProductFilter().then((res) => setItemProduct(res));
+
     }, [props]);
 
-    useEffect(() => {
-        if (ref.current.children) {
-            for (let i = 0; i < ref.current.children.length; i++) {
-                if (!ref.current.children[i].children[1].children.length) {
-                    ref.current.children[i].remove()
-                }
-            }
-        }
-    }, [itemProduct]);
 
     return (
         <Header>
@@ -46,6 +41,7 @@ function Home(props) {
                                         product_name={productItem.name}
                                         id={productItem.id}
                                         category={productItem.category}
+                                        img={productItem.thumbnail.split('_')[1]}
                                     />
                                 ))}
                         </div>
@@ -59,7 +55,7 @@ function Home(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         gtCategory: () => dispatch(getCategory()),
-        gtProductFilter: (category) => dispatch(getProductsFil(category)),
+        gtProductFilter: (category) => dispatch(getProductsFilAll(category)),
     };
 };
 

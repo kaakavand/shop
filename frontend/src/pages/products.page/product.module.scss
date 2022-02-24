@@ -7,4 +7,26 @@
         display: flex;
         flex-wrap: wrap;
     }
+
+    ul {
+        margin-top: 15px;
+        text-align: center;
+
+        button {
+            width: 30px;
+            height: 35px;
+            margin: 0 5px;
+            border: none;
+            box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+            background-color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all ease 0.3s;
+        }
+
+        .active {
+            background: #1976d2;
+            color: #fff;
+        }
+    }
 }

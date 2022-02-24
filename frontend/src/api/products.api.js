@@ -4,14 +4,23 @@ export async function products(pageNum) {
     try {
         const response = await http.get(`/products/?_limit=${5}&_page=${pageNum}`);
         const all = response.headers['x-total-count']
-        // console.log(response.data.concat(all));
         return response.data.concat(all);
     } catch (e) {
         return Promise.reject(e);
     }
 }
 
-export async function getProductFilter() {
+export async function getProductFilter(category) {
+    try {
+        const response = await http.get(`/products/?category=${category}`);
+        
+        return response.data;
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
+export async function getProductFilterAll() {
     try {
         const response = await http.get(`/products`);
         return response.data;
