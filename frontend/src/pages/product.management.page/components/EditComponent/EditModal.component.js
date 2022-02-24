@@ -5,8 +5,10 @@ import ButtonThumbnail from "./ButtonThumbnail.component";
 import { connect } from "react-redux";
 import { gtProductId } from "redux/action/productId.action";
 import { Button } from "@mui/material";
-import { editInventory, getProductId } from "api/products.api";
-
+import { editInventory, getProductId, upload } from "api/products.api";
+import CreatableSingle from "../EditComponent/CreatableSingle.component";
+import { getCategory } from "redux/action/caregory.action";
+import { postCategory } from "api/categoty.api";
 
 function EditModal(props) {
     const [id, setId] = useState(false);
@@ -15,9 +17,12 @@ function EditModal(props) {
     const [name, setName] = useState("");
     const [brand, setBrand] = useState("");
     const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [allCategory, setAllCategory] = useState([]);
 
     useEffect(() => {
         setId(props.id);
+        props.gtCategory().then((res) => setAllCategory(res));
     }, []);
 
     useEffect(() => {
@@ -30,19 +35,41 @@ function EditModal(props) {
         }
     }, [id]);
 
-    const dataPost = {
-        name: name,
-        brand: brand,
-        image: images,
-        thumbnail: thumbnail[0],
-        // category: categoryName,
-        // idCategory: categoryId,
-        description: description,
-    };
+    console.log(category);
 
-    const submitForm = () => {
-        editInventory(id , dataPost)
-    }
+    const submitForm = (e) => {
+        e.preventDefault()
+        const dataPost = {
+            name: name,
+            brand: brand,
+            image: images,
+            thumbnail: thumbnail[0],
+            category: category,
+            idCategory: "",
+            description: description,
+        };
+        (async () => {
+            allCategory.forEach((item) => {
+                if (item.name === dataPost.category) {
+                    dataPost.idCategory = item.id;
+                }
+            });
+
+            if (!dataPost.idCategory) {
+                const obj = {
+                    name: dataPost.category,
+                };
+                postCategory(obj).then((res) => {
+                    dataPost.idCategory = res.id;
+                    dataPost.category = res.name;
+                });
+            }
+
+            editInventory(id, dataPost);
+            // props.setModalAdd();
+            console.log(dataPost);
+        })();
+    };
 
     return (
         <>
@@ -80,10 +107,18 @@ function EditModal(props) {
                             value={brand}
                             onChange={({ target }) => setBrand(target.value)}
                         />
+
+                        <CreatableSingle
+                            id={id}
+                            setCategoryProps={(value) => setCategory(value)}
+                        />
+
                         <textarea
                             name="description"
-                            value={brand}
-                            onChange={({ target }) => setDescription(target.value)}
+                            value={description}
+                            onChange={({ target }) =>
+                                setDescription(target.value)
+                            }
                         ></textarea>
                         <Button
                             type="submit"
@@ -102,6 +137,7 @@ function EditModal(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         gtProduct: (pageNum) => dispatch(gtProductId(pageNum)),
+        gtCategory: () => dispatch(getCategory()),
     };
 };
 
