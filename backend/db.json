@@ -48,6 +48,50 @@
       "amount": "520",
       "createdAt": 1645691338946,
       "id": 3
+    },
+    {
+      "name": "asdfadf",
+      "brand": "",
+      "image": [],
+      "thumbnail": "resume.jpg_c4483890823037d49a548d8f89ac87e6",
+      "price": "0",
+      "count": "5000",
+      "category": "ali",
+      "idCategory": "",
+      "description": "789",
+      "amount": "520",
+      "createdAt": 1645700523616,
+      "id": 4
+    },
+    {
+      "name": "il",
+      "brand": "",
+      "image": [
+        "i1.jpg_b7b8a918f92d1e1be270793a03fe2b8a"
+      ],
+      "thumbnail": "resume.jpg_85116df9e98281c778910749edab6cce",
+      "price": "0",
+      "count": "5000",
+      "category": "lillilliilil",
+      "idCategory": "",
+      "description": "",
+      "amount": "520",
+      "createdAt": 1645700645786,
+      "id": 5
+    },
+    {
+      "name": "adsfsadfasfdasf",
+      "brand": "",
+      "image": [],
+      "thumbnail": "resume.jpg_5a55055a41bc5237e4162e8e45708d4e",
+      "price": "0",
+      "count": "5000",
+      "category": "Tablet",
+      "idCategory": 17,
+      "description": "",
+      "amount": "520",
+      "createdAt": 1645700815197,
+      "id": 6
     }
   ],
   "category": [
@@ -65,6 +109,23 @@
       "name": "Tablet",
       "createdAt": 1643375019984,
       "id": 17
+    },
+    {
+      "createdAt": 1645700381597,
+      "id": 18
+    },
+    {
+      "createdAt": 1645700523611,
+      "id": 19
+    },
+    {
+      "createdAt": 1645700645778,
+      "id": 20
+    },
+    {
+      "name": "ccccccc",
+      "createdAt": 1645700776108,
+      "id": 21
     }
   ],
   "users": [

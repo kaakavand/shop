@@ -1,45 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { getCategory } from "redux/action/caregory.action";
 import { gtProductId } from "redux/action/productId.action";
+import style from "../../productManage.module.scss";
 
 const CreatableSingle = (props) => {
     const [category, setCategory] = useState([]);
     const [flag, setFlag] = useState(false);
-    const [idCategory, setIdCategory] = useState('');
-
-    useEffect(() => {
-        if (props.flag) {
-            setFlag(true);
-            props.getId(props.id).then(res => setIdCategory(res.category))
-        }
-    }, [props]);
+    const [idCategory, setIdCategory] = useState("");
+    const [ulFlaf, setUlFlag] = useState(false);
+    const ref = useRef()
+    // useEffect(() => {
+    //         props.getId(props.id).then((res) => setIdCategory(res.category));
+    // }, [props]);
 
     useEffect(() => {
         props.gtCategory().then((res) => setCategory(res));
     }, [props]);
 
+    const setValueInputs = (e) => {
+        const obj = {
+            name : e.target.innerText,
+            id : e.target.className
+        }
+        ref.current.value = obj.name
+
+        props.setCategoryProps(ref.current.value)
+    }
+
+
 
     return (
         <>
-            {flag ? (
-                <select name="category" id="category">
-                    {category.map((item) => (
-                        <option value={`${item.name}_${item.id}`} id={item.id} selected= {item.name === idCategory ? true : false}>
-                            {item.name}
-                        </option>
-                    ))}
-                </select>
-            ) : (
-                <select name="category" id="category">
-                    <option value="category">دسته بندی</option>
-                    {category.map((item) => (
-                        <option value={`${item.name}_${item.id}`} id={item.id}>
-                            {item.name}
-                        </option>
-                    ))}
-                </select>
-            )}
+            <div className={style.mainInput}>
+                {ulFlaf ? (
+                    <span onClick={() => setUlFlag(false)}>X</span>
+                ) : (
+                    <span onClick={() => setUlFlag(true)}>V</span>
+                )}
+                <input type="text" ref={ref} onChange={() => props.setCategoryProps(ref.current.value)}/>
+                {ulFlaf ? (
+                    <ul>
+                        {category.map((item) => (
+                            <li className={item.id} onClick={setValueInputs}>{item.name}</li>
+                        ))}
+                    </ul>
+                ) : null}
+            </div>
         </>
     );
 };

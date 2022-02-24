@@ -7,6 +7,9 @@ import ButtonThumbnail from "./ButtonThumbnail.component";
 import ButtonUpload from "./ButtonUpload.component";
 import CreatableSingle from "./CreatableSingle.component";
 import FormData from "form-data";
+import { connect } from "react-redux";
+import { getCategory } from "redux/action/caregory.action";
+import { postCategory } from "api/categoty.api";
 
 function ModalAdd(props) {
     const [textArea, setTextArea] = useState("");
@@ -14,20 +17,21 @@ function ModalAdd(props) {
     const [thumbnail, setThumbnail] = useState([]);
     const [arr, setArr] = useState([]);
     const [res, setRes] = useState([]);
-
-    console.log(thumbnail);
+    const [category, setCategory] = useState("");
+    const [allCategory, setAllCategory] = useState([]);
 
     useEffect(() => {
         setRes([...res, ...arr]);
     }, [arr]);
 
+    useEffect(() => {
+        props.gtCategory().then((res) => setAllCategory(res));
+    }, []);
+
     const addProduct = (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
         const data = Object.fromEntries(form);
-        const categoryId = data.category.split("_")[1];
-        const categoryName = data.category.split("_")[0];
-        // let arr = []
 
         const dataPost = {
             name: data.product,
@@ -36,8 +40,8 @@ function ModalAdd(props) {
             thumbnail: "",
             price: "0",
             count: "5000",
-            category: categoryName,
-            idCategory: categoryId,
+            category: category,
+            idCategory: "",
             description: data.description,
             amount: "520",
         };
@@ -50,8 +54,26 @@ function ModalAdd(props) {
             await upload(formD).then((res) => {
                 dataPost.thumbnail = res.originalname + "_" + res.filename;
             });
+
+            allCategory.forEach((item) => {
+                if (item.name === dataPost.category) {
+                    dataPost.idCategory = item.id;
+                }
+            });
+
+            if (!dataPost.idCategory) {
+                const obj = {
+                    name : dataPost.category
+                }
+                postCategory(obj).then(res => {
+                    dataPost.idCategory = res.id
+                    dataPost.category = res.name
+                })
+            }
+        
             postProduct(dataPost);
             props.setModalAdd();
+            console.log(dataPost);
         })();
     };
 
@@ -76,7 +98,9 @@ function ModalAdd(props) {
                     <input name="product" type="text" placeholder="نام کالا" />
                     <input name="brand" type="text" placeholder=" برند" />
 
-                    <CreatableSingle />
+                    <CreatableSingle
+                        setCategoryProps={(value) => setCategory(value)}
+                    />
 
                     <textarea name="description"></textarea>
                     <Button
@@ -92,4 +116,13 @@ function ModalAdd(props) {
     );
 }
 
-export default ModalAdd;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        gtCategory: () => dispatch(getCategory()),
+        // getId: (id) => dispatch(gtProductId(id)),
+    };
+};
+
+const ModalAddRed = connect(null, mapDispatchToProps)(ModalAdd);
+
+export default ModalAddRed;

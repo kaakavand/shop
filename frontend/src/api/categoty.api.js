@@ -8,3 +8,13 @@ export async function category() {
         return Promise.reject(e);
     }
 }
+
+
+export async function postCategory(data) {
+    try {
+        const response = await http.post(`/category` , data);
+        return response.data;
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
