@@ -8,6 +8,7 @@ import ModalAdd from './components/AddComponent/ModalAdd.component';
 function ProductManag() {
 
   const [first, setfirst] = useState(false)
+  const [flag, setFlag] = useState(false)
 
   return (
     <>
@@ -20,7 +21,7 @@ function ProductManag() {
             <ProductsList/>
           </div>
       </HeaderPanel>
-      {first ? <ModalAdd setModalAdd={() => setfirst(false)}/> : null}
+      {first ? <ModalAdd setModalAdd={() => setfirst(false)} reRender = {() => setFlag(!flag)}/> : null}
     </>
   );
 }

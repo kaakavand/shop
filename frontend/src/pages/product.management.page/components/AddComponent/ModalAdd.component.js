@@ -74,6 +74,7 @@ function ModalAdd(props) {
             postProduct(dataPost);
             props.setModalAdd();
             console.log(dataPost);
+            props.reRender()
         })();
     };
 

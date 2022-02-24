@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductsFil } from "redux/action/productFilter.acrion";
+import Sidbar from "./components/Sidbar.component";
 import style from "./product.module.scss";
 
 function Products(props) {
@@ -44,8 +45,7 @@ function Products(props) {
                                 product_name={productItem.name}
                                 id={productItem.id}
                                 category={productItem.category}
-                                img={productItem.thumbnail.split('_')[1]}
-
+                                img={productItem.thumbnail.split("_")[1]}
                             />
                         ))}
                 </div>
@@ -62,6 +62,7 @@ function Products(props) {
                     ))}
                 </ul>
             </div>
+            <Sidbar />
         </Header>
     );
 }

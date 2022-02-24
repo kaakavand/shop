@@ -97,6 +97,22 @@
       "amount": "520",
       "createdAt": 1645730513832,
       "id": 6
+    },
+    {
+      "name": "macbook",
+      "brand": "apple",
+      "image": [
+        "l2.jpg_d370220117a28744cad5b3bc02bb64db"
+      ],
+      "thumbnail": "l1.jpg_d64f757c884e15324efdd5ff8ef4780b",
+      "price": "0",
+      "count": "5000",
+      "category": "Laptop",
+      "idCategory": 14,
+      "description": "test",
+      "amount": "520",
+      "createdAt": 1645732101388,
+      "id": 7
     }
   ],
   "category": [
