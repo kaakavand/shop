@@ -1,6 +1,6 @@
 import ProductItem from "components/ProductItem/ProductItem.component";
 import { Header } from "layout";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { getCategory } from "redux/action/caregory.action";
 import { getProductsFil } from "redux/action/productFilter.acrion";
@@ -10,17 +10,29 @@ import { Link } from "react-router-dom";
 function Home(props) {
     const [category, setCategory] = useState([]);
     const [itemProduct, setItemProduct] = useState([]);
+    const [first, setfirst] = useState(false);
+    const ref = useRef();
 
     useEffect(() => {
         props.gtCategory().then((res) => setCategory(res));
         props.gtProductFilter().then((res) => setItemProduct(res));
     }, [props]);
 
+    useEffect(() => {
+        if (ref.current.children) {
+            for (let i = 0; i < ref.current.children.length; i++) {
+                if (!ref.current.children[i].children[1].children.length) {
+                    ref.current.children[i].remove()
+                }
+            }
+        }
+    }, [itemProduct]);
+
     return (
         <Header>
-            <div className={style.container}>
+            <div className={style.container} ref={ref}>
                 {category.map((item) => (
-                    <>
+                    <div>
                         <Link to={`/${item.name}`}>{item.name}</Link>
                         <div className={style.row}>
                             {itemProduct
@@ -37,7 +49,7 @@ function Home(props) {
                                     />
                                 ))}
                         </div>
-                    </>
+                    </div>
                 ))}
             </div>
         </Header>
