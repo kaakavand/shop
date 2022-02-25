@@ -69,7 +69,6 @@ function Products(props) {
                 </ul>
             </div>
             <ul className={style.ul}>
-                {console.log(category)}
                 {category.map((item) => (
                     <li>
                         <Link to={`/${item.name}`}>{item.name}</Link>

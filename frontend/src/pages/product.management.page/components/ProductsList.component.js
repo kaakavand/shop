@@ -19,8 +19,8 @@ function ProductsList(props) {
     const [id, setId] = useState(false);
     const [test, setTest] = useState(true);
     const [editModal, setEditModal] = useState(false);
-    const [flag, setFlag] = useState(false)
-    const [flagRender, setFlagRender] = useState(false)
+    const [flag, setFlag] = useState(false);
+    const [flagRender, setFlagRender] = useState(false);
 
     useEffect(() => {
         props
@@ -36,10 +36,10 @@ function ProductsList(props) {
             array.push(i);
         }
         setNumberOfPageArray(array);
-    }, [props, page, NumberOfItems, test , flag , flagRender]);
+    }, [props, page, NumberOfItems, test, flag, flagRender]);
 
     useEffect(() => {
-        setFlag(!flag)
+        setFlag(!flag);
     }, [props.reRender]);
 
     return (
@@ -66,10 +66,9 @@ function ProductsList(props) {
                                 }`}
                                 setStateEdit={(e) => {
                                     if (e.target.parentElement.id) {
-                                        setEditModal(true)
-                                        setId(e.target.parentElement.id)
+                                        setEditModal(true);
+                                        setId(e.target.parentElement.id);
                                     }
-                                    
                                 }}
                                 removeProduct={(e) => {
                                     deletProduct(e.target.parentElement.id);
@@ -101,7 +100,13 @@ function ProductsList(props) {
                 </ul>
             </div>
             {first ? <ModalAdd setModalAdd={() => setfirst(false)} /> : null}
-            {editModal ? <EditModal id={id} setModalEdit={() => setEditModal(false)} reRender={() => setFlagRender(!flagRender) }/> : null}
+            {editModal ? (
+                <EditModal
+                    id={id}
+                    setModalEdit={() => setEditModal(false)}
+                    reRender={() => setFlagRender(!flagRender)}
+                />
+            ) : null}
         </>
     );
 }

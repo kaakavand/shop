@@ -103,7 +103,7 @@ function ModalAdd(props) {
                         setCategoryProps={(value) => setCategory(value)}
                     />
 
-                    <textarea name="description"></textarea>
+                    <textarea placeholder="توضیحات محصول" name="description"></textarea>
                     <Button
                         type="submit"
                         className={style.button}

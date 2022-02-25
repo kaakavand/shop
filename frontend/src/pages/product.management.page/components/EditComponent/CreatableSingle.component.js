@@ -38,6 +38,7 @@ const CreatableSingle = (props) => {
                 )}
                 <input
                     type="text"
+                    placeholder="دسته بندی"
                     ref={ref}
                     value={value}
                     onChange={({ target }) => {

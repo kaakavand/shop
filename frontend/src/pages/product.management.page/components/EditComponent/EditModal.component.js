@@ -66,7 +66,7 @@ function EditModal(props) {
             }
 
             editInventory(id, dataPost);
-            // props.setModalAdd();
+            props.setModalEdit()
             console.log(dataPost);
             props.reRender()
         })();
@@ -116,6 +116,7 @@ function EditModal(props) {
 
                         <textarea
                             name="description"
+                            placeholder="توضیحات محصول"
                             value={description}
                             onChange={({ target }) =>
                                 setDescription(target.value)

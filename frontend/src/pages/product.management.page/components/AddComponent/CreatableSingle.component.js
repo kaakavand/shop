@@ -38,7 +38,7 @@ const CreatableSingle = (props) => {
                 ) : (
                     <span onClick={() => setUlFlag(true)}>V</span>
                 )}
-                <input type="text" ref={ref} onChange={() => props.setCategoryProps(ref.current.value)}/>
+                <input type="text" ref={ref} placeholder='دسته بندی' onChange={() => props.setCategoryProps(ref.current.value)}/>
                 {ulFlaf ? (
                     <ul>
                         {category.map((item) => (
