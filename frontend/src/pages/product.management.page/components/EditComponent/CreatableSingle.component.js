@@ -50,7 +50,10 @@ const CreatableSingle = (props) => {
                         {category.map((item) => (
                             <li
                                 className={item.id}
-                                onClick={(e) => setValue(e.target.innerText)}
+                                onClick={(e) => {
+                                    setValue(e.target.innerText);
+                                    setUlFlag(false);
+                                }}
                             >
                                 {item.name}
                             </li>

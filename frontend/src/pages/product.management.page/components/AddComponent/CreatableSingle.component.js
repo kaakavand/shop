@@ -26,6 +26,7 @@ const CreatableSingle = (props) => {
         ref.current.value = obj.name
 
         props.setCategoryProps(ref.current.value)
+        setUlFlag(false)
     }
 
 
