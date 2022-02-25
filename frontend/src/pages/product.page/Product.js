@@ -12,7 +12,10 @@ function Product(props) {
     const [flag, setFlag] = useState(false);
     const [flagCart, setFlagCart] = useState(true);
 
-    const navigate = useNavigate()
+    const [flagImg, setFlagImg] = useState(false);
+    const [img, setImg] = useState("");
+
+    const navigate = useNavigate();
     const params = useParams();
 
     useEffect(() => {
@@ -20,16 +23,15 @@ function Product(props) {
     }, [flagCart]);
 
     useEffect(() => {
-        if (JSON.parse(localStorage.getItem('cart_item'))) {
-            JSON.parse(localStorage.getItem('cart_item')).forEach(item => {
+        if (JSON.parse(localStorage.getItem("cart_item"))) {
+            JSON.parse(localStorage.getItem("cart_item")).forEach((item) => {
                 if (item.id === params.id) {
-                    setFlagCart(false)
+                    setFlagCart(false);
                 }
                 console.log(item);
             });
         }
     }, [flagCart]);
-
 
     console.log(first);
 
@@ -70,9 +72,11 @@ function Product(props) {
             localStorage.setItem("cart_item", JSON.stringify(arr));
         }
         setFlag(!flag);
-        setFlagCart(false)
+        setFlagCart(false);
         setNumber(1);
     };
+
+    console.log(img);
 
     return (
         <Header flag={flag}>
@@ -98,6 +102,10 @@ function Product(props) {
                                                   item.split("_")[1]
                                               }`}
                                               alt=""
+                                              onClick={(e) => {
+                                                  setImg(e.target.src);
+                                                  setFlagImg(true)
+                                              }}
                                           />
                                       </figure>
                                   ))
@@ -134,8 +142,12 @@ function Product(props) {
                         ) : (
                             <button
                                 className={style.cartAdd}
-                                onClick={() => navigate('/cart')}
-                                style={{background : '#ffdad8' , color : '#f44336' , border : '1px solid #ffdad8'}}
+                                onClick={() => navigate("/cart")}
+                                style={{
+                                    background: "#ffdad8",
+                                    color: "#f44336",
+                                    border: "1px solid #ffdad8",
+                                }}
                             >
                                 مشاهده سبد خرید
                             </button>
@@ -144,6 +156,17 @@ function Product(props) {
                 </div>
                 <p>{first.description}</p>
             </div>
+
+            {flagImg ? (
+                <section onClick={() => setFlagImg(false)}>
+                    <figure>
+                        <img
+                            src={`${img}`}
+                            alt=""
+                        />
+                    </figure>
+                </section>
+            ) : null}
         </Header>
     );
 }
