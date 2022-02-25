@@ -18,7 +18,7 @@ function ProductManag() {
               <h3>مدیریت کالا ها</h3>
               <Button variant="contained" className={style.button} onClick={() => setfirst(true)}>افزودن کالا</Button>
             </div>
-            <ProductsList/>
+            <ProductsList reRender = {flag}/>
           </div>
       </HeaderPanel>
       {first ? <ModalAdd setModalAdd={() => setfirst(false)} reRender = {() => setFlag(!flag)}/> : null}

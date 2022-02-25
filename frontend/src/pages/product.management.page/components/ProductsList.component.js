@@ -19,6 +19,8 @@ function ProductsList(props) {
     const [id, setId] = useState(false);
     const [test, setTest] = useState(true);
     const [editModal, setEditModal] = useState(false);
+    const [flag, setFlag] = useState(false)
+    const [flagRender, setFlagRender] = useState(false)
 
     useEffect(() => {
         props
@@ -34,7 +36,11 @@ function ProductsList(props) {
             array.push(i);
         }
         setNumberOfPageArray(array);
-    }, [props, page, NumberOfItems, test]);
+    }, [props, page, NumberOfItems, test , flag , flagRender]);
+
+    useEffect(() => {
+        setFlag(!flag)
+    }, [props.reRender]);
 
     return (
         <>
@@ -63,6 +69,7 @@ function ProductsList(props) {
                                         setEditModal(true)
                                         setId(e.target.parentElement.id)
                                     }
+                                    
                                 }}
                                 removeProduct={(e) => {
                                     deletProduct(e.target.parentElement.id);
@@ -94,7 +101,7 @@ function ProductsList(props) {
                 </ul>
             </div>
             {first ? <ModalAdd setModalAdd={() => setfirst(false)} /> : null}
-            {editModal ? <EditModal id={id} setModalEdit={() => setEditModal(false)} /> : null}
+            {editModal ? <EditModal id={id} setModalEdit={() => setEditModal(false)} reRender={() => setFlagRender(!flagRender) }/> : null}
         </>
     );
 }

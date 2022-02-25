@@ -2,7 +2,8 @@ import ProductItem from "components/ProductItem/ProductItem.component";
 import { Header } from "layout";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { getCategory } from "redux/action/caregory.action";
 import { getProductsFil } from "redux/action/productFilter.acrion";
 import Sidbar from "./components/Sidbar.component";
 import style from "./product.module.scss";
@@ -10,7 +11,7 @@ import style from "./product.module.scss";
 function Products(props) {
     const params = useParams();
     const [first, setfirst] = useState([]);
-    console.log(params);
+    const [category, setCategory] = useState([]);
 
     const [page, setPage] = useState(1);
     const NumberOfItems = 6;
@@ -27,27 +28,32 @@ function Products(props) {
 
     useEffect(() => {
         props.gtProductFilter(params.category).then((res) => setfirst(res));
-    }, [props]);
+        props.gtCategory().then((res) => setCategory(res));
+    }, [props, params]);
 
     return (
         <Header>
             <div className={style.container}>
                 <h1>{params.category}</h1>
                 <div className={style.row}>
-                    {first
-                        .slice(
-                            page * NumberOfItems - NumberOfItems,
-                            page * NumberOfItems
-                        )
-                        .map((productItem) => (
-                            <ProductItem
-                                price={productItem.price}
-                                product_name={productItem.name}
-                                id={productItem.id}
-                                category={productItem.category}
-                                img={productItem.thumbnail.split("_")[1]}
-                            />
-                        ))}
+                    {first.length ? (
+                        first
+                            .slice(
+                                page * NumberOfItems - NumberOfItems,
+                                page * NumberOfItems
+                            )
+                            .map((productItem) => (
+                                <ProductItem
+                                    price={productItem.price}
+                                    product_name={productItem.name}
+                                    id={productItem.id}
+                                    category={productItem.category}
+                                    img={productItem.thumbnail.split("_")[1]}
+                                />
+                            ))
+                    ) : (
+                        <h5 className={style.h5}>محصولی یافت نشد</h5>
+                    )}
                 </div>
                 <ul>
                     {numberOfPageArray.map((item) => (
@@ -62,7 +68,14 @@ function Products(props) {
                     ))}
                 </ul>
             </div>
-            <Sidbar />
+            <ul className={style.ul}>
+                {console.log(category)}
+                {category.map((item) => (
+                    <li>
+                        <Link to={`/${item.name}`}>{item.name}</Link>
+                    </li>
+                ))}
+            </ul>
         </Header>
     );
 }
@@ -70,6 +83,7 @@ function Products(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         gtProductFilter: (category) => dispatch(getProductsFil(category)),
+        gtCategory: () => dispatch(getCategory()),
     };
 };
 

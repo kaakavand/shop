@@ -25,7 +25,7 @@
         "l1.jpg_d6f14651391ff42e5149ea6c71efa724"
       ],
       "thumbnail": "i1.jpg_72b1e820087df1c6feccb174e1e3dba1",
-      "price": "0",
+      "price": "50",
       "count": "5000",
       "category": "Mobile",
       "idCategory": 16,
@@ -41,7 +41,7 @@
         "l1.jpg_56f639bfd68497c10b0b33743c6c38e4"
       ],
       "thumbnail": "i1.jpg_b5b47a8f90fa5cbf266cea57454178ce",
-      "price": "0",
+      "price": "100",
       "count": "5000",
       "category": "Mobile",
       "idCategory": 16,
@@ -57,7 +57,7 @@
         "i1.jpg_fc5bffdb5491a30e5c9716d8339d6d33"
       ],
       "thumbnail": "i1.jpg_5a23d45007c5600fe00cceb449fd5fb8",
-      "price": "0",
+      "price": "50",
       "count": "5000",
       "category": "Mobile",
       "idCategory": 16,
@@ -67,13 +67,13 @@
       "id": 4
     },
     {
-      "name": "samsung",
+      "name": "s21 ultra",
       "brand": "samsun",
       "image": [
         "l2.jpg_c8d10ea174496b8486e6426ba5f3ab9f"
       ],
       "thumbnail": "l1.jpg_8ab2441455ab58584834337d12044e6f",
-      "price": "0",
+      "price": "555",
       "count": "5000",
       "category": "Mobile",
       "idCategory": 16,
@@ -113,6 +113,22 @@
       "amount": "520",
       "createdAt": 1645732101388,
       "id": 7
+    },
+    {
+      "name": "ipad 2020",
+      "brand": "apple",
+      "image": [
+        "i1.jpg_c434a1ccee2a09c95ce3af8cd6a5a741"
+      ],
+      "thumbnail": "i1.jpg_1172d045769fee45974f54bea3a24492",
+      "price": "0",
+      "count": "5000",
+      "category": "Tablet",
+      "idCategory": 17,
+      "description": "test",
+      "amount": "520",
+      "createdAt": 1645758790802,
+      "id": 8
     }
   ],
   "category": [

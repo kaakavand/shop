@@ -68,6 +68,7 @@ function EditModal(props) {
             editInventory(id, dataPost);
             // props.setModalAdd();
             console.log(dataPost);
+            props.reRender()
         })();
     };
 
