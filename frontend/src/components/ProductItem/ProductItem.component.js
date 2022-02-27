@@ -8,7 +8,7 @@ function ProductItem(props) {
     const navigate = useNavigate()
 
     const navigateProduct = (e) => {
-        const id = e.target.parentElement.id
+        const id = e.target.parentElement.parentElement.id
         const category = e.target.className
         navigate(`/${category}/${id}`)
     }
@@ -23,8 +23,8 @@ function ProductItem(props) {
                     <h2>{props.product_name}</h2>
                     <h3>{props.price} تومان</h3>
                 </div>
-            </div>
             <button className={props.category} onClick={navigateProduct}>مشاهده محصول</button>
+            </div>
         </div>
     );
 }

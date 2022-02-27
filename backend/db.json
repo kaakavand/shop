@@ -7,11 +7,11 @@
         "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4",
         "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4"
       ],
-      "thumbnail": "i1.jpg_0d5b0ccfac3b2cac323a1d9ba60235e4",
-      "price": "1000",
-      "count": "10",
+      "thumbnail": "darkbomber-7d86783d9b44ade571e7e2f783008ee7.png_bbd5b8aeec934e37d22b59782fba5b24",
+      "price": "800",
+      "count": "105",
       "category": "Mobile",
-      "idCategory": "16",
+      "idCategory": 16,
       "description": "tes",
       "amount": "520",
       "createdAt": 1645426111395,
@@ -24,9 +24,9 @@
         "l2.jpg_e2965057d49a5c224bd922b7a2a84f38",
         "l1.jpg_d6f14651391ff42e5149ea6c71efa724"
       ],
-      "thumbnail": "i1.jpg_72b1e820087df1c6feccb174e1e3dba1",
-      "price": "50",
-      "count": "8",
+      "thumbnail": "darkbomber-7d86783d9b44ade571e7e2f783008ee7.png_eb2b5d66353c2eb097fcc3003bd71d24",
+      "price": "80",
+      "count": "500",
       "category": "Mobile",
       "idCategory": 16,
       "description": "test lorem",
@@ -40,9 +40,9 @@
       "image": [
         "l1.jpg_56f639bfd68497c10b0b33743c6c38e4"
       ],
-      "thumbnail": "i1.jpg_b5b47a8f90fa5cbf266cea57454178ce",
-      "price": "100",
-      "count": "5",
+      "thumbnail": "i1.jpg_ccf1039b4eba33b99a90712d1d2f6021",
+      "price": "50",
+      "count": "80",
       "category": "Mobile",
       "idCategory": 16,
       "description": "test",
@@ -54,11 +54,11 @@
       "name": "iphone 6s",
       "brand": "apple",
       "image": [
-        "i1.jpg_fc5bffdb5491a30e5c9716d8339d6d33"
+        "resume.jpg_88ac26f0d48bf041844251bd67f60b9e"
       ],
-      "thumbnail": "i1.jpg_5a23d45007c5600fe00cceb449fd5fb8",
+      "thumbnail": "339eae.jpg_6fcf0852d383a5b8b4c757a18520da1d",
       "price": "50",
-      "count": "1",
+      "count": "50",
       "category": "Mobile",
       "idCategory": 16,
       "description": "test",
@@ -73,7 +73,7 @@
         "l2.jpg_c8d10ea174496b8486e6426ba5f3ab9f"
       ],
       "thumbnail": "l1.jpg_8ab2441455ab58584834337d12044e6f",
-      "price": "555",
+      "price": "800",
       "count": "5",
       "category": "Mobile",
       "idCategory": 16,
@@ -233,142 +233,14 @@
         "i1.jpg_7dc2725e64a7069b5e766228f405642e"
       ],
       "thumbnail": "l2.jpg_251d4437d50b61b52e3dea3ae51b9c19",
-      "price": "0",
-      "count": "5000",
+      "price": "2000000",
+      "count": "5",
       "category": "Laptop",
       "idCategory": 14,
       "description": "test",
       "amount": "520",
       "createdAt": 1645760178162,
       "id": 16
-    },
-    {
-      "name": "surface book",
-      "brand": "microsift",
-      "image": [
-        "l2.jpg_5b5d5f1daeab89a1b79c3296c2b4a839"
-      ],
-      "thumbnail": "l2.jpg_0dcf1bda5eafc0607cec9a7dc8ec36f4",
-      "price": "0",
-      "count": "5000",
-      "category": "Laptop",
-      "idCategory": 14,
-      "description": "test",
-      "amount": "520",
-      "createdAt": 1645760305961,
-      "id": 17
-    },
-    {
-      "name": "surface pro",
-      "brand": "micrsoft",
-      "image": [
-        "l2.jpg_06cd10655003a9540be37be8677ad905"
-      ],
-      "thumbnail": "l1.jpg_2fb6fc3219002d391d5d85ca47a91e5b",
-      "price": "0",
-      "count": "5000",
-      "category": "Laptop",
-      "idCategory": 14,
-      "description": "test",
-      "amount": "520",
-      "createdAt": 1645760347083,
-      "id": 18
-    },
-    {
-      "name": "mac 2021",
-      "brand": "apple",
-      "image": [
-        "l2.jpg_309cc2e5d01dfd1da0e4f0e5e69bb66d"
-      ],
-      "thumbnail": "l1.jpg_c72acebdb4a9ab4c3388cd8b0f8eb927",
-      "price": "0",
-      "count": "5000",
-      "category": "Laptop",
-      "idCategory": 14,
-      "description": "test",
-      "amount": "520",
-      "createdAt": 1645760362940,
-      "id": 19
-    },
-    {
-      "name": "test",
-      "brand": "test",
-      "image": [
-        "l2.jpg_1792620cc26131432cb329c1c24a2fae"
-      ],
-      "thumbnail": "l1.jpg_2268267e5524616f51956c25367c9d26",
-      "price": "0",
-      "count": "5000",
-      "category": "Mobile",
-      "idCategory": 16,
-      "description": "",
-      "amount": "520",
-      "createdAt": 1645760400832,
-      "id": 20
-    },
-    {
-      "name": "test 1",
-      "brand": "test",
-      "image": [
-        "l2.jpg_a93f71a5ca7537c3d07f0a838f35a17b"
-      ],
-      "thumbnail": "l1.jpg_84afcb18514c06efee6525e90d472dce",
-      "price": "0",
-      "count": "5000",
-      "category": "Tablet",
-      "idCategory": 17,
-      "description": "",
-      "amount": "520",
-      "createdAt": 1645760415530,
-      "id": 21
-    },
-    {
-      "name": "test 3",
-      "brand": "test",
-      "image": [
-        "l2.jpg_f651aa4e701938b76bb8970cdb20bc75"
-      ],
-      "thumbnail": "i1.jpg_4024cfe31302df883252c831bc2fec4e",
-      "price": "0",
-      "count": "5000",
-      "category": "Laptop",
-      "idCategory": 14,
-      "description": "",
-      "amount": "520",
-      "createdAt": 1645760427824,
-      "id": 22
-    },
-    {
-      "name": "test 5",
-      "brand": "test",
-      "image": [
-        "l2.jpg_3741b9e73fa714cc9aaf67d635d45ea4"
-      ],
-      "thumbnail": "l1.jpg_3fc6209ee5a8864d6e4b5b7663a1372c",
-      "price": "0",
-      "count": "5000",
-      "category": "Mobile",
-      "idCategory": 16,
-      "description": "",
-      "amount": "520",
-      "createdAt": 1645760441268,
-      "id": 23
-    },
-    {
-      "name": "test 6",
-      "brand": "test",
-      "image": [
-        "l2.jpg_7389954f3623ab8c7de20ca8b2293ba9"
-      ],
-      "thumbnail": "i1.jpg_97de3987603a6b26f12354c7d622d1c4",
-      "price": "0",
-      "count": "5000",
-      "category": "Mobile",
-      "idCategory": 16,
-      "description": "",
-      "amount": "520",
-      "createdAt": 1645760458282,
-      "id": 24
     }
   ],
   "category": [
@@ -386,6 +258,11 @@
       "name": "Tablet",
       "createdAt": 1643375019984,
       "id": 17
+    },
+    {
+      "name": "test",
+      "createdAt": 1645768658743,
+      "id": 18
     }
   ],
   "users": [

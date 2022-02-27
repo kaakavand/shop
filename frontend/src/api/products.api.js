@@ -10,9 +10,18 @@ export async function products(pageNum) {
     }
 }
 
+export async function productsSpecial() {
+    try {
+        const response = await http.get(`/products/?_limit=${3}`);
+        return response.data;
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
 export async function getProductFilter(category) {
     try {
-        const response = await http.get(`/products/?category=${category}`);
+        const response = await http.get(`/products/?category=${category}&_limit=3`);
         
         return response.data;
     } catch (e) {

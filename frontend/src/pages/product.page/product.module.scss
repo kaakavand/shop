@@ -42,7 +42,6 @@
                         width: 100% !important;
                         height: 100% !important;
                         cursor: pointer;
-
                     }
                 }
             }
@@ -78,16 +77,20 @@
                     text-align: center;
                     outline: none;
                     border: 1px solid #fff;
+                    cursor: pointer;
                 }
                 button {
-                    height: 30px;
+                    height: 22px;
                     width: 30px;
                     color: #f44336;
                     background: #ffdbd8;
                     font-weight: bold;
                     border: none;
-                    border: 1px solid #f44336;
+                    /* border: 1px solid #f44336; */
                     cursor: pointer;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    font-size: 14px;
                 }
             }
             .cartAdd {

@@ -12,6 +12,7 @@ function Products(props) {
     const params = useParams();
     const [first, setfirst] = useState([]);
     const [category, setCategory] = useState([]);
+    const [showUl, setShowUl] = useState(false);
 
     const [page, setPage] = useState(1);
     const NumberOfItems = 6;
@@ -69,11 +70,23 @@ function Products(props) {
                 </ul>
             </div>
             <ul className={style.ul}>
-                {category.map((item) => (
-                    <li>
-                        <Link to={`/${item.name}`}>{item.name}</Link>
-                    </li>
-                ))}
+                <h2 onClick={() => setShowUl(!showUl)}>دسته بندی</h2>
+                {showUl
+                    ? category.map((item) => (
+                          <li>
+                              <Link
+                                  to={`/${item.name}`}
+                                  className={
+                                      params.category === item.name
+                                          ? style.activeLi
+                                          : null
+                                  }
+                              >
+                                  {item.name}
+                              </Link>
+                          </li>
+                      ))
+                    : null}
             </ul>
         </Header>
     );

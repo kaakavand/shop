@@ -38,22 +38,50 @@
     box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
     width: 250px;
     position: absolute;
-    top: 130px;
+    top: 80px;
     right: 90px;
     list-style: none;
+
+    h2 {
+        text-align: center;
+        font-size: 21px;
+        background-color: #ebf2f3;
+        padding: 10px;
+        color: #35858B;
+        cursor: pointer;
+    }
+
     li {
+        text-align: center;
+        padding: 5px;
         a {
             color: #072227;
             text-decoration: none;
-            padding: 5px;
+            display: inline-block;
+            padding: 3px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all ease 0.3s;
+            width: 95%;
+            border-radius: 5px;
+
+            &:hover {
+                color: #35858B;
+            }
         }
     }
+}
+
+.activeLi {
+    color: #35858B !important;
+    background-color: #ebf2f3;
 }
 
 .h5 {
     width: 100%;
     text-align: center;
     color: #F44336;
+    border-radius: 5px;
     font-size: 25px;
     background-color: #FFCDD2;
 }

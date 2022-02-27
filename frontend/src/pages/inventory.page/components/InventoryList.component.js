@@ -31,7 +31,7 @@ function InventoryList(props) {
         
         setfirst(props.setRender)
         setNumberOfPageArray(array);
-    }, [props, page, NumberOfItems , first]);
+    }, [props , page, NumberOfItems , first]);
     
     
     

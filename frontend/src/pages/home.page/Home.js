@@ -9,42 +9,78 @@ import {
 } from "redux/action/productFilter.acrion";
 import style from "./home.module.scss";
 import { Link } from "react-router-dom";
+import { getSpecial } from "redux/action/productSpecial.action";
 
 function Home(props) {
     const [category, setCategory] = useState([]);
     const [itemProduct, setItemProduct] = useState([]);
-    const [first, setfirst] = useState(false);
+    const [special, setSpecial] = useState([{}, {}, {}]);
     const ref = useRef();
 
     useEffect(() => {
         props.gtCategory().then((res) => setCategory(res));
-        props.gtProductFilter().then((res) => setItemProduct(res));
+        props.getSpecialProduct().then((res) => setSpecial(res));
+    }, []);
 
-    }, [props]);
-
-    
+    useEffect(() => {
+        const arr = [];
+        category.forEach((item) => {
+            props.gtProductFilter(item.name).then((res) => {
+                if (res.length) {
+                    const obj = {
+                        name: item.name,
+                        items: res,
+                    };
+                    arr.push(obj);
+                    setItemProduct([...itemProduct, ...arr]);
+                }
+            });
+        });
+    }, [category]);
 
     return (
         <Header>
+            <div className={style.special_item}>
+                <div className={style.firstItema}>
+                    <figure>
+                        {special[0].thumbnail ? (
+                            <img
+                                src={`http://localhost:3002/files/6fcf0852d383a5b8b4c757a18520da1d`}
+                                alt="adsfasdf"
+                            />
+                        ) : null}
+                    </figure>
+                </div>
+              
+            </div>
+            <div className={style.row_item}>
+                <div className={style.box}>
+                    amir
+                </div>
+                <div className={style.box}>
+                    amir
+                </div>
+                <div className={style.box}>
+                    amir
+                </div>
+                <div className={style.box}>
+                    amir
+                </div>
+            </div>
             <div className={style.container} ref={ref}>
-                {category.map((item) => (
+                {itemProduct.map((item) => (
                     <div>
                         <Link to={`/${item.name}`}>{item.name}</Link>
                         <div className={style.row}>
-                            {itemProduct
-                                .filter(
-                                    (ptoduct) => ptoduct.category === item.name
-                                )
-                                .slice(0, 6)
-                                .map((productItem) => (
-                                    <ProductItem
-                                        price={productItem.price}
-                                        product_name={productItem.name}
-                                        id={productItem.id}
-                                        category={productItem.category}
-                                        img={productItem.thumbnail.split('_')[1]}
-                                    />
-                                ))}
+                            {item.items.map((item) => (
+                                <ProductItem
+                                    price={item.price}
+                                    product_name={item.name}
+                                    id={item.id}
+                                    category={item.category}
+                                    img={item.thumbnail.split("_")[1]}
+                                />
+                            ))}
                         </div>
                     </div>
                 ))}
@@ -56,7 +92,8 @@ function Home(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         gtCategory: () => dispatch(getCategory()),
-        gtProductFilter: (category) => dispatch(getProductsFilAll(category)),
+        gtProductFilter: (category) => dispatch(getProductsFil(category)),
+        getSpecialProduct: () => dispatch(getSpecial()),
     };
 };
 

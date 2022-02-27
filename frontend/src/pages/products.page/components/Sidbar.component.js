@@ -1,15 +1,16 @@
-import React from 'react'
+import React from "react";
 
 function Sidbar() {
-  return (
-    <ul>
-        <li>item 1</li>
-        <li>item 1</li>
-        <li>item 1</li>
-        <li>item 1</li>
-        <li>item 1</li>
-    </ul>
-  )
+    return (
+        <ul>
+            <h2>دسته بندی</h2>
+            <li>item 1</li>
+            <li>item 1</li>
+            <li>item 1</li>
+            <li>item 1</li>
+            <li>item 1</li>
+        </ul>
+    );
 }
 
-export default Sidbar
+export default Sidbar;
