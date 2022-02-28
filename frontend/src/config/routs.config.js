@@ -9,4 +9,5 @@ export const PATHS = {
     PRODUCT:'/product',
     CART:'/cart',
     FINAL_BUY:'/final-buy',
+    Form:'/form',
 };

@@ -4,6 +4,8 @@ import { Button } from "@mui/material";
 import style from "./cart.module.scss";
 import { connect } from "react-redux";
 import { gtProductId } from "redux/action/productId.action";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "config/routs.config";
 
 function Cart(props) {
     const [first, setfirst] = useState(null);
@@ -11,6 +13,7 @@ function Cart(props) {
     const [flag, setFlag] = useState(false);
     const ref = useRef();
     const tbody = useRef();
+    const navigata = useNavigate()
 
     useEffect(() => {
         setfirst(JSON.parse(localStorage.getItem("cart_item")));
@@ -36,7 +39,6 @@ function Cart(props) {
         const id = Number(e.target.className);
         await props.gtProduct(id).then((res) => (num = res.count));
 
-        console.log();
 
         if (+e.target.parentElement.querySelector("input").value < num) {
             let ls = JSON.parse(localStorage.getItem("cart_item"));
@@ -155,6 +157,7 @@ function Cart(props) {
                         variant="contained"
                         type="submit"
                         className={style.button}
+                        onClick={() => navigata(PATHS.Form)}
                         disabled = {first ? false : true}
                     >
                         نهایی کردن سبد خرید

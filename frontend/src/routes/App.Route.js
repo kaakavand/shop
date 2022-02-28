@@ -14,6 +14,7 @@ import { PrivateRoute } from "./PrivateRoute/Private";
 import { ProtectedRoute } from "./ProtectedRoute/Protected";
 import { PublicRoute } from "./PublicRoute/PublicRoute";
 import { createBrowserHistory } from "history";
+import List from "pages/cart.page/components/List.component";
 
 const history = createBrowserHistory();
 export const AppRoute = () => {
@@ -29,12 +30,16 @@ export const AppRoute = () => {
                     element={<PublicRoute component={<Home />} />}
                 />
                 <Route
-                    path={'/:category/:id'}
+                    path={"/:category/:id"}
                     element={<PublicRoute component={<Product />} />}
                 />
                 <Route
                     path={PATHS.FINAL_BUY}
                     element={<PublicRoute component={<Final />} />}
+                />
+                <Route
+                    path={PATHS.Form}
+                    element={<PrivateRoute component={<List />} />}
                 />
                 <Route
                     path={PATHS.LOGIN}
@@ -53,7 +58,7 @@ export const AppRoute = () => {
                     element={<PrivateRoute component={<Inventory />} />}
                 />
                 <Route
-                    path={'/:category'}
+                    path={"/:category"}
                     element={<PublicRoute component={<Products />} />}
                 />
             </Routes>
