@@ -54,9 +54,11 @@ function OrderList(props) {
                                 id={item.id}
                                 name={item.name}
                                 price={item.totalPrice}
-                                orderSubmit={item.orderSubmit}
-                                amount="120"
-                                name_product="iphone 13"
+                                orderSubmit={new Intl.DateTimeFormat("en-US", {
+                                    year: "numeric",
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                }).format(Date.now(item.createdAt))}
                             />
                         ))}
                 </tbody>

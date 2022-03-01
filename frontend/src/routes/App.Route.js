@@ -15,6 +15,7 @@ import { ProtectedRoute } from "./ProtectedRoute/Protected";
 import { PublicRoute } from "./PublicRoute/PublicRoute";
 import { createBrowserHistory } from "history";
 import List from "pages/cart.page/components/List.component";
+import Payment from '../pages/cart.page/components/Payment.component'
 
 const history = createBrowserHistory();
 export const AppRoute = () => {
@@ -39,7 +40,11 @@ export const AppRoute = () => {
                 />
                 <Route
                     path={PATHS.Form}
-                    element={<PrivateRoute component={<List />} />}
+                    element={<PublicRoute component={<List />} />}
+                />
+                <Route
+                    path={`${PATHS.Payment}/`}
+                    element={<PublicRoute component={<Payment />} />}
                 />
                 <Route
                     path={PATHS.LOGIN}

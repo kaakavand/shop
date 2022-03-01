@@ -9,3 +9,12 @@ export async function orders() {
         return Promise.reject(e);
     }
 }
+
+export async function postOrder(data) {
+    try {
+        const response = await http.post(`/orders` , data);
+        return response.data;
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}

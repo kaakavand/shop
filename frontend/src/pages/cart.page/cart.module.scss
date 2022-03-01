@@ -44,7 +44,7 @@
     table {
         margin-top: 15px;
         .name {
-            width:  700px;
+            width: 700px;
         }
         .price {
             width: 200px;
@@ -53,7 +53,6 @@
             width: 300px;
         }
     }
-
 
     .count {
         display: flex;
@@ -79,9 +78,9 @@
             }
         }
 
-        button{
+        button {
             padding: 3px 10px;
-            font-family: 'iransans';
+            font-family: "iransans";
             cursor: pointer;
             color: #f44336;
             background: #ffdbd8;
@@ -91,5 +90,57 @@
             border-radius: 3px;
         }
     }
+}
 
+.form_list {
+    width: 1200px;
+    margin: 0 auto;
+
+    button {
+        width: 250px;
+        font-family: "iransans";
+        background-color: #43a047;
+        &:hover {
+            background-color: #26792a;
+        }
+    }
+
+    h3 {
+        box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+        color: #072227;
+        border-radius: 3px;
+        padding: 5px 10px;
+        margin-top: 15px;
+    }
+
+    .input_box {
+        box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+        margin-top: 15px;
+        padding: 10px 0;
+        border-radius: 5px;
+
+        .row {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+
+            label {
+                display: flex;
+                flex-direction: column;
+            }
+
+            input {
+                width: 400px;
+                padding: 7px;
+                border-radius: 3px;
+                border: 1px solid #072227;
+                margin-top: 5px;
+                outline: none;
+
+                &::placeholder {
+                    font-family: "iransans";
+                }
+            }
+        }
+    }
 }

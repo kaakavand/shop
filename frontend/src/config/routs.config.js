@@ -10,4 +10,5 @@ export const PATHS = {
     CART:'/cart',
     FINAL_BUY:'/final-buy',
     Form:'/form',
+    Payment:'/payment',
 };

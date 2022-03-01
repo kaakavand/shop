@@ -11,6 +11,11 @@ const Header = (props) => {
     const [number, setNumber] = useState(0);
     const [flag, setFlag] = useState(0);
 
+    // useEffect(() => {
+    //     console.log(props.closeShop)
+    // }, [props])
+    
+
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("cart_item"))) {
             let ls = JSON.parse(localStorage.getItem("cart_item"));
