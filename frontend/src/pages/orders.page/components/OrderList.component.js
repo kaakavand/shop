@@ -5,9 +5,12 @@ import { connect } from "react-redux";
 import { getOrders } from "redux/action/orders.action";
 import OrderRow from "./OrderRow.component";
 import style from "../orders.module.scss";
+import OrderInfo from "./OrderInfo.component";
 
 function OrderList(props) {
     const [order, setOrder] = useState([]);
+    const [flag, setFlag] = useState(false);
+    const [id, setId] = useState(false);
 
     const [page, setPage] = useState(1);
     const NumberOfItems = 5;
@@ -50,6 +53,10 @@ function OrderList(props) {
                         )
                         .map((item) => (
                             <OrderRow
+                            click={(e) => {
+                                setId(e.target.parentElement.parentElement.id)
+                                setFlag(true)
+                            }}
                                 key={item.id}
                                 id={item.id}
                                 name={item.name}
@@ -75,6 +82,7 @@ function OrderList(props) {
                     </button>
                 ))}
             </ul>
+            {flag ? <OrderInfo id={id} /> : null}
         </>
     );
 }

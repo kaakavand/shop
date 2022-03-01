@@ -55,8 +55,7 @@ function Payment() {
 
             setfirst(true);
             postOrder(obj);
-            // localStorage.setItem('user' , null)
-            // localStorage.setItem('user' , null)
+
             setFlag(true);
         } else {
             setfirst(false);
@@ -64,7 +63,7 @@ function Payment() {
     }, []);
 
     return (
-        <Header>
+        <Header close={first}>
             <div className={style.container}>
                 {first ? <h1>پرداخت موفق</h1> : <h1>پرداخت انجام نشد</h1>}
             </div>

@@ -2,6 +2,7 @@ import { Button, FormControlLabel, Radio } from "@mui/material";
 import { HeaderPanel } from "layout";
 import React from "react";
 import { useState } from "react";
+import OrderInfo from "./components/OrderInfo.component";
 import OrderList from "./components/OrderList.component";
 import OrderListEnd from "./components/OrderListEnd.component";
 import style from "./orders.module.scss";

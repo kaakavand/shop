@@ -27,6 +27,8 @@ function Products(props) {
         setPage(Number(e.target.value));
     };
 
+    console.log(first);
+
     useEffect(() => {
         props.gtProductFilter(params.category).then((res) => setfirst(res));
         props.gtCategory().then((res) => setCategory(res));

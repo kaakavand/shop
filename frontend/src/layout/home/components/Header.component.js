@@ -11,23 +11,21 @@ const Header = (props) => {
     const [number, setNumber] = useState(0);
     const [flag, setFlag] = useState(0);
 
-    // useEffect(() => {
-    //     console.log(props.closeShop)
-    // }, [props])
-    
+    useEffect(() => {
+        if (props.close) {
+            localStorage.setItem("cart_item", JSON.stringify([]));
+        }
+    }, [props]);
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("cart_item"))) {
             let ls = JSON.parse(localStorage.getItem("cart_item"));
             let num = 0;
-
             ls.forEach((item) => {
                 num += item.number;
             });
-
             setNumber(num);
         }
-
         if (props.flag) {
             setFlag(!flag);
         }
