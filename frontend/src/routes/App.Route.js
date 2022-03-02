@@ -15,7 +15,7 @@ import { ProtectedRoute } from "./ProtectedRoute/Protected";
 import { PublicRoute } from "./PublicRoute/PublicRoute";
 import { createBrowserHistory } from "history";
 import List from "pages/cart.page/components/List.component";
-import Payment from '../pages/cart.page/components/Payment.component'
+import Payment from '../pages/cart.page/components/payment.component'
 
 const history = createBrowserHistory();
 export const AppRoute = () => {
