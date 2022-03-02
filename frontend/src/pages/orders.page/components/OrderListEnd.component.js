@@ -5,9 +5,16 @@ import { connect } from "react-redux";
 import { getOrders } from "redux/action/orders.action";
 import OrderRow from "./OrderRow.component";
 import style from "../orders.module.scss";
+import OrderInfo from "./OrderInfo.component";
+
 
 function OrderListEnd(props) {
     const [order, setOrder] = useState([]);
+    const [flag, setFlag] = useState(false);
+    const [id, setId] = useState(false);
+    const [refresh, setRefresh] = useState(false);
+
+
 
     const [page, setPage] = useState(1);
     const NumberOfItems = 5;
@@ -22,13 +29,21 @@ function OrderListEnd(props) {
         setPage(Number(e.target.value));
     };
 
+
     useEffect(() => {
         props
             .gtOrders()
             .then((res) =>
                 setOrder(res.filter((item) => item.deliverd === false))
             );
-    }, [props]);
+    }, [props , refresh]);
+
+
+    const showOrderInfo = (e) => {
+        setId(e.target.parentElement.parentElement.id)
+        setFlag(true)
+        console.log(e.target.parentElement.parentElement.id);
+    }
 
     console.log(order);
     return (
@@ -51,10 +66,15 @@ function OrderListEnd(props) {
                         .map((item) => (
                             <OrderRow
                                 key={item.id}
+                                click = {showOrderInfo}
                                 id={item.id}
                                 name={item.name}
                                 price={item.totalPrice}
-                                orderSubmit={item.orderSubmit}
+                                orderSubmit={new Intl.DateTimeFormat("en-US", {
+                                    year: "numeric",
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                }).format(item.createdAt)}
                                 amount="120"
                                 name_product="iphone 13"
                             />
@@ -73,6 +93,8 @@ function OrderListEnd(props) {
                     </button>
                 ))}
             </ul>
+            {flag ? <OrderInfo refresh={() => setRefresh(!refresh)}  flag={'yes'} closeInfo={() => setFlag(false)} id={id} /> : null}
+
         </>
     );
 }
@@ -86,5 +108,3 @@ const mapDispatchToProps = (dispatch) => {
 const OderListEndRed = connect(null, mapDispatchToProps)(OrderListEnd);
 
 export default OderListEndRed;
-
-

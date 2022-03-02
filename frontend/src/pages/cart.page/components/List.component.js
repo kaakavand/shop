@@ -1,7 +1,9 @@
 import { Button } from "@mui/material";
 import { Header } from "layout";
 import React, { useState } from "react";
+// import MyComponent from './DatePicker.component';
 import style from "../cart.module.scss";
+import AppDate from "./DatePicker.component";
 
 
 function List() {
@@ -64,6 +66,7 @@ function List() {
                             <input onChange={({target}) => setDate(target.value)} name='date' type="date" placeholder="1400/12/23" />
                         </label>
                     </div>
+                    {/* <AppDate /> */}
                     <Button type="submit" variant="contained">
                         پرداخت
                     </Button>

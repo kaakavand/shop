@@ -1,12 +1,27 @@
-import React from "react";
-import { render } from "react-dom";
-import { DatePicker } from "jalali-react-datepicker";
+import moment from "moment";
+import jMoment from "moment-jalaali";
+import React, { useState } from "react";
+import JalaliUtils from "@date-io/jalaali";
 
-function Component() {
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+
+jMoment.loadPersian({ dialect: "persian-modern", usePersianDigits: true });
+
+function AppDate() {
+  const [selectedDate, handleDateChange] = useState(moment());
+
   return (
-    <div>DatePicker</div>
-  )
+    <MuiPickersUtilsProvider utils={JalaliUtils} locale="fa">
+      <DatePicker
+        // clearable
+        okLabel="تأیید"
+        cancelLabel="لغو"
+        clearLabel="پاک کردن"
+        labelFunc={date => (date ? date.format("jYYYY/jMM/jDD") : "")}
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
+    </MuiPickersUtilsProvider>
+  );
 }
-
-
-export default Component;
+export default AppDate;

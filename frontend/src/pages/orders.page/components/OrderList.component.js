@@ -11,6 +11,7 @@ function OrderList(props) {
     const [order, setOrder] = useState([]);
     const [flag, setFlag] = useState(false);
     const [id, setId] = useState(false);
+    const [refresh, setRefresh] = useState(false);
 
     const [page, setPage] = useState(1);
     const NumberOfItems = 5;
@@ -31,7 +32,9 @@ function OrderList(props) {
             .then((res) =>
                 setOrder(res.filter((item) => item.deliverd === true))
             );
-    }, [props]);
+
+
+    }, [props , refresh]);
 
     console.log(order);
     return (
@@ -65,7 +68,7 @@ function OrderList(props) {
                                     year: "numeric",
                                     month: "2-digit",
                                     day: "2-digit",
-                                }).format(Date.now(item.createdAt))}
+                                }).format(item.createdAt)}
                             />
                         ))}
                 </tbody>
@@ -82,7 +85,7 @@ function OrderList(props) {
                     </button>
                 ))}
             </ul>
-            {flag ? <OrderInfo id={id} /> : null}
+            {flag ? <OrderInfo refresh={() => setRefresh(!refresh)} closeInfo={() => setFlag(false)} id={id} /> : null}
         </>
     );
 }

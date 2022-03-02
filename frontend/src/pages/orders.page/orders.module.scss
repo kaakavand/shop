@@ -110,5 +110,59 @@ td {
         width: 500px;
         padding: 10px 15px;
         border-radius: 5px;
+
+        .row {
+            width: 100%;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+
+            margin-bottom: 30px;
+            h2 {
+                font-size: 21px;
+            }
+
+            span {
+                color: #fff;
+                background-color: #f44336;
+                padding: 3px 8px 2px 8px;
+                font-size: 12px;
+                border-radius: 3px;
+                cursor: pointer;
+                transition: all ease 0.3s;
+            }
+        }
+
+        h3 {
+            font-size: 17px;
+            margin: 10px 0px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            font-family: "iransans";
+            background: #4caf50;
+
+            &:hover {
+                background: #318634;
+            }
+        }
+    }
+}
+
+table {
+    width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px !important;
+    border-radius: 3px;
+
+    tr {
+        border-top: 1px solid red;
+    }
+    .name {
+        width: 600px;
     }
 }
