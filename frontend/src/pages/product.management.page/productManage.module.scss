@@ -16,6 +16,10 @@ td {
     margin: 0 auto;
     margin-top: 40px;
 
+    input {
+        font-family: "IRANSansFaNum" !important;
+    }
+
     .row {
         display: flex;
         align-items: center;
@@ -25,7 +29,7 @@ td {
         padding: 10px;
 
         .button {
-            font-family: "iransans";
+            font-family: "IRANSansFaNum" !important;
             background-color: #43a047;
         }
     }
@@ -59,7 +63,7 @@ td {
             .edit,
             .delet {
                 padding: 5px 10px;
-                font-family: "iransans";
+                font-family: "IRANSansFaNum" !important;
             }
 
             .delet {
@@ -86,6 +90,7 @@ td {
             border-radius: 3px;
             cursor: pointer;
             transition: all ease 0.3s;
+            font-family: "IRANSansFaNum" !important;
         }
 
         .active {
@@ -127,8 +132,8 @@ td {
                 left: 5px;
                 width: 22px;
                 height: 22px;
-                background-color: #C8E6C9;
-                color: #66BB6A;
+                background-color: #c8e6c9;
+                color: #66bb6a;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -137,7 +142,7 @@ td {
             }
             ul {
                 list-style: none;
-                margin-top : 3px;
+                margin-top: 3px;
                 position: absolute;
                 background: #fff;
                 width: 100%;
@@ -319,15 +324,14 @@ td {
 
     .button {
         width: 100%;
-        font-family: "iransans";
+        font-family: "IRANSansFaNum" !important;
     }
 }
 
 span {
-    font-family: "iransans" !important;
+    font-family: "IRANSansFaNum" !important;
 }
 
-
 textarea {
-    font-family: 'iransans';
+    font-family: "IRANSansFaNum";
 }
