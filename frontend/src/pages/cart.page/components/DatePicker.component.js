@@ -1,27 +1,22 @@
-// import moment from "moment";
-// import jMoment from "moment-jalaali";
-// import React, { useState } from "react";
-// import JalaliUtils from "@date-io/jalaali";
+import React, { Component } from "react";
+import moment from "jalali-moment";
 
-// import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-
-// jMoment.loadPersian({ dialect: "persian-modern", usePersianDigits: true });
-
-// function AppDate() {
-//   const [selectedDate, handleDateChange] = useState(moment());
-
-//   return (
-//     <MuiPickersUtilsProvider utils={JalaliUtils} locale="fa">
-//       <DatePicker
-//         // clearable
-//         okLabel="تأیید"
-//         cancelLabel="لغو"
-//         clearLabel="پاک کردن"
-//         labelFunc={date => (date ? date.format("jYYYY/jMM/jDD") : "")}
-//         value={selectedDate}
-//         onChange={handleDateChange}
-//       />
-//     </MuiPickersUtilsProvider>
-//   );
-// }
-// export default AppDate;
+export default class DatePicker extends Component {
+    render() {
+        return (
+            <div>
+                {this.props.data.map((post, key) => (
+                    <div key={key} className="post-detail">
+                        <h1>{post.title}</h1>
+                        <p>
+                            {moment(post.date, "YYYY/MM/DD")
+                                .locale("fa")
+                                .format("YYYY/MM/DD")}
+                        </p>
+                        <hr />
+                    </div>
+                ))}
+            </div>
+        );
+    }
+}

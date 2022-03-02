@@ -3,6 +3,7 @@ import { Header } from "layout";
 import React, { useState } from "react";
 // import MyComponent from './DatePicker.component';
 import style from "../cart.module.scss";
+import DatePicker from "./DatePicker.component";
 import AppDate from "./DatePicker.component";
 
 

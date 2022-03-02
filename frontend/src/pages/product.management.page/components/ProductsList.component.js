@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { deletProduct } from "api/products.api";
 import ModalAdd from "./AddComponent/ModalAdd.component";
 import EditModal from "./EditComponent/EditModal.component";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 function ProductsList(props) {
     const [products, setProducts] = useState([]);
@@ -71,15 +73,35 @@ function ProductsList(props) {
                                     }
                                 }}
                                 removeProduct={(e) => {
-                                    deletProduct(e.target.parentElement.id);
-                                    setTest(!test);
-                                    if (
-                                        e.target.parentElement.parentElement
-                                            .parentElement.children.length ==
-                                        "1"
-                                    ) {
-                                        setPage(page - 1);
-                                    }
+                                    confirmAlert({
+                                        title: "محصول حذف شود ؟",
+                                        // message: "Are you sure to do this.",
+                                        buttons: [
+                                            {
+                                                label: "بله",
+                                                onClick: () => {
+                                                    deletProduct(
+                                                        e.target.parentElement
+                                                            .id
+                                                    );
+                                                    setTest(!test);
+                                                    if (
+                                                        e.target.parentElement
+                                                            .parentElement
+                                                            .parentElement
+                                                            .children.length ==
+                                                        "1"
+                                                    ) {
+                                                        setPage(page - 1);
+                                                    }
+                                                },
+                                            },
+                                            {
+                                                label: "خیر",
+                                                onClick: () => console.log('no')
+                                            },
+                                        ],
+                                    });
                                 }}
                             />
                         ))}
