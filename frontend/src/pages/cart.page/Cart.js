@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { gtProductId } from "redux/action/productId.action";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "config/routs.config";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 function Cart(props) {
     const [first, setfirst] = useState(null);
@@ -84,15 +86,30 @@ function Cart(props) {
     };
 
     const remove = (e) => {
-        let id = e.target.className;
-        const arr = [];
-        JSON.parse(localStorage.getItem("cart_item")).forEach((item) => {
-            if (item.id !== id) {
-                arr.push(item);
-            }
+        confirmAlert({
+            title: "محصول حذف شود ؟",
+            // message: "Are you sure to do this.",
+            buttons: [
+                {
+                    label: "بله",
+                    onClick: () => {
+                        let id = e.target.className;
+                        const arr = [];
+                        JSON.parse(localStorage.getItem("cart_item")).forEach((item) => {
+                            if (item.id !== id) {
+                                arr.push(item);
+                            }
+                        });
+                        localStorage.setItem("cart_item", JSON.stringify(arr));
+                        setFlag(!flag)
+                    },
+                },
+                {
+                    label: "خیر",
+                    onClick: () => console.log('no')
+                },
+            ],
         });
-        localStorage.setItem("cart_item", JSON.stringify(arr));
-        setFlag(!flag)
     };
 
     return (
