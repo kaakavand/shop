@@ -43,7 +43,7 @@ function OrderInfo(props) {
                         year: "numeric",
                         month: "2-digit",
                         day: "2-digit",
-                    }).format(1646125479363)}
+                    }).format(value.createdAt)}
                 </h3>
                 <table>
                     <thead>

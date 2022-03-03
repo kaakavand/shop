@@ -2,11 +2,13 @@ import { postOrder } from "api/orders.api";
 import { Header } from "layout";
 import React, { useEffect, useState } from "react";
 import style from "../cart.module.scss";
+import { useNavigate } from "react-router-dom";
 
 function Payment() {
     const [first, setfirst] = useState(false);
     const [flag, setFlag] = useState(false);
     const result = window.location.href.split("result")[1].slice(1);
+    const navigate = useNavigate();
 
     // {
     //     "id": 20,
@@ -34,12 +36,18 @@ function Payment() {
     //     ]
     //   },
 
+    // window.onbeforeunload = (e) => {
+    //     e.preventDefault()
+    //     // console.log('yes');
+    // };
+
+    // window.location.reload(false);
     useEffect(() => {
-        if (result === "yes") {
-            let total = 0
-            JSON.parse(localStorage.getItem("cart_item")).forEach(item => {
-                total += (+item.price * item.number)
-            }); 
+        if (result === "yes" && JSON.parse(localStorage.getItem("cart_item"))[0]) {
+            let total = 0;
+            JSON.parse(localStorage.getItem("cart_item")).forEach((item) => {
+                total += +item.price * item.number;
+            });
 
             const obj = {
                 name: JSON.parse(localStorage.getItem("user")).name,
@@ -59,6 +67,7 @@ function Payment() {
             setFlag(true);
         } else {
             setfirst(false);
+            navigate('/')
         }
     }, []);
 
