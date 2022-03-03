@@ -55,16 +55,16 @@ function Home(props) {
             </div>
             <div className={style.row_item}>
                 <div className={style.box}>
-                    amir
+                    پشتیبانی 24 ساعته
                 </div>
                 <div className={style.box}>
-                    amir
+                    هفت روز گارانتی
                 </div>
                 <div className={style.box}>
-                    amir
+                    ارسال رایگان به تهران
                 </div>
                 <div className={style.box}>
-                    amir
+                    هشت سال سابقه درخشان
                 </div>
             </div>
             <div className={style.container} ref={ref}>

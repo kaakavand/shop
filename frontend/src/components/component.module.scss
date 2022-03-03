@@ -13,7 +13,7 @@
     transition: all ease 0.3s;
 
     &:hover {
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 2px 0px;;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 2px 0px;
     }
 
     .item_box {
@@ -31,7 +31,6 @@
             }
         }
 
-
         .info_product {
             margin-right: 10px;
             display: flex;
@@ -45,34 +44,33 @@
                 color: #072227;
                 text-align: center;
             }
-            
+
             h3 {
                 font-size: 18px;
                 margin-bottom: 10px;
-                color: #F44336;
+                color: #f44336;
                 text-align: center;
                 font-weight: bold;
             }
         }
-        
     }
 
     button {
-        // position: absolute;
         left: 5px;
         bottom: 5px;
         padding: 3px 5px;
-        font-family: 'iransans';
+        font-family: "iransans";
         cursor: pointer;
-        color: #F44336;
-        border: 1px solid #F44336;
-        background: none;
+        color: #fff;
+        border: 1px solid #00796b;
+        background: #00796b;
         border-radius: 3px;
         transition: all ease 0.3s;
         width: 100%;
 
         &:hover {
-            background: #fff6f5;
+            background: #098f7f;
+            border: 1px solid #098f7f;
         }
     }
 }

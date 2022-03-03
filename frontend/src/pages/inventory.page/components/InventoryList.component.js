@@ -12,36 +12,33 @@ function InventoryList(props) {
     const [NumberOfItems, setNumberOfItems] = useState(1);
     const numberOfPage = Math.ceil(NumberOfItems / 5);
     const [numberOfPageArray, setNumberOfPageArray] = useState([]);
-    const [first, setfirst] = useState(false)
-
+    const [first, setfirst] = useState(false);
 
     useEffect(() => {
         props
-        .gtProducts(page)
-        .then((res) => setProducts(res.slice(0, res.length - 1)));
+            .gtProducts(page)
+            .then((res) => setProducts(res.slice(0, res.length - 1)));
         props
-        .gtProducts(page)
-        .then((res) =>
-        setNumberOfItems(Number(res.slice(res.length - 1)[0]))
-        );
+            .gtProducts(page)
+            .then((res) =>
+                setNumberOfItems(Number(res.slice(res.length - 1)[0]))
+            );
         const array = [];
         for (let i = 1; i < numberOfPage + 1; i++) {
             array.push(i);
         }
-        
-        setfirst(props.setRender)
+
+        setfirst(props.setRender);
         setNumberOfPageArray(array);
-    }, [props , page, NumberOfItems , first]);
-    
-    
-    
+    }, [props, page, NumberOfItems, first]);
+
     return (
         <>
             <table>
                 <thead>
                     <tr>
                         <th>کالا</th>
-                        <th>قیمت</th>
+                        <th>قیمت (تومان)</th>
                         <th>موجودی</th>
                     </tr>
                 </thead>
@@ -53,8 +50,8 @@ function InventoryList(props) {
                             amount={item.count}
                             name_product={item.name}
                             priceId={`price_${item.id}`}
-                            amountId = {`amount_${item.id}`}
-                            count = {item.count}
+                            amountId={`amount_${item.id}`}
+                            count={item.count}
                             id={item.id}
                             setRender={props.setRender}
                         />
