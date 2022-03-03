@@ -1,14 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button class="yes">yes</button>
-    <button class="no">no</button>
-    <script src="./app.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./main.css" />
+        <title>payment</title>
+    </head>
+    <body>
+        <div>
+            <div
+                style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+                    margin-bottom: 15px;
+                    padding: 10px 20px;
+                "
+            >
+                <h2>مبلغ</h2>
+                <span class="price_total" style="font-size: 17px; color: #F44336; font-weight: bold;">25</span>
+            </div>
+            <form action="">
+                <div class="timeout">
+                    <h3>مدت زمان</h3>
+                    <span>2:50</span>
+                </div>
+                <div class="number">
+                    <h3>شماره کارت</h3>
+                    <input type="text" />
+                </div>
+                <div class="date">
+                    <h3>تاریخ انقضا</h3>
+                    <div class="date_box">
+                        <input type="text" /> /
+                        <input type="text" />
+                    </div>
+                </div>
+                <div class="pass">
+                    <h3>رمز دوم اینترنتی</h3>
+                    <div
+                        class="date_box"
+                        style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                        "
+                    >
+                        <input type="text" />
+                        <button>درخاست رمز پویا</button>
+                    </div>
+                </div>
+                <div class="mail">
+                    <h3>ایمیل</h3>
+                    <input type="text" />
+                </div>
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    "
+                >
+                    <button class="yes">پرداخت</button>
+                    <button class="no">انصراف</button>
+                </div>
+            </form>
+        </div>
+        <script src="./app.js"></script>
+    </body>
 </html>

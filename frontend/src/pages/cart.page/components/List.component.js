@@ -6,29 +6,35 @@ import style from "../cart.module.scss";
 import DatePicker from "./DatePicker.component";
 import AppDate from "./DatePicker.component";
 
-
 function List() {
-    const [name, setName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [adress, setAdress] = useState('')
-    const [code, setCode] = useState('')
-    const [phone, setPhone] = useState('')
-    const [date, setDate] = useState('')
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [adress, setAdress] = useState("");
+    const [code, setCode] = useState("");
+    const [phone, setPhone] = useState("");
+    const [date, setDate] = useState("");
+
 
     const submit = (e) => {
         e.preventDefault();
         const data = {
-            name : name,
-            lastName : lastName,
-            adress : adress,
-            code : code,
-            phone : phone,
-            date : date,
-        }
+            name: name,
+            lastName: lastName,
+            adress: adress,
+            code: code,
+            phone: phone,
+            date: date,
+        };
 
         if (data) {
-            localStorage.setItem('user' , JSON.stringify(data))
-            window.location.href = 'http://127.0.0.1:5500/payment/'
+            localStorage.setItem("user", JSON.stringify(data));
+            let total = 0
+            JSON.parse(localStorage.getItem("cart_item")).forEach((item) => {
+                total += +item.price * item.number
+            });
+        
+            console.log(total);
+            window.location.href = `http://127.0.0.1:5500/payment/?${total}`;
         }
     };
 
@@ -40,31 +46,67 @@ function List() {
                     <div className={style.row}>
                         <label>
                             نام :
-                            <input onChange={({target}) => setName(target.value)} name='name' type="text" placeholder="امیرحسین" />
+                            <input
+                                onChange={({ target }) => setName(target.value)}
+                                name="name"
+                                type="text"
+                                placeholder="امیرحسین"
+                            />
                         </label>
                         <label>
                             نام خانوادگی :
-                            <input onChange={({target}) => setLastName(target.value)} name='lastName' type="text" placeholder="کاکاوند" />
+                            <input
+                                onChange={({ target }) =>
+                                    setLastName(target.value)
+                                }
+                                name="lastName"
+                                type="text"
+                                placeholder="کاکاوند"
+                            />
                         </label>
                     </div>
                     <div className={style.row}>
                         <label>
                             آدرس :
-                            <input onChange={({target}) => setAdress(target.value)} name='adress' type="text" placeholder="تهران , رسالت" />
+                            <input
+                                onChange={({ target }) =>
+                                    setAdress(target.value)
+                                }
+                                name="adress"
+                                type="text"
+                                placeholder="تهران , رسالت"
+                            />
                         </label>
                         <label>
                             کد پستی :
-                            <input onChange={({target}) => setCode(target.value)} name='code' type="number" placeholder="123456789" />
+                            <input
+                                onChange={({ target }) => setCode(target.value)}
+                                name="code"
+                                type="number"
+                                placeholder="123456789"
+                            />
                         </label>
                     </div>
                     <div className={style.row}>
                         <label>
                             تلفن همراه :
-                            <input onChange={({target}) => setPhone(target.value)} name='phone' type="number" placeholder="09918547952" />
+                            <input
+                                onChange={({ target }) =>
+                                    setPhone(target.value)
+                                }
+                                name="phone"
+                                type="number"
+                                placeholder="09918547952"
+                            />
                         </label>
                         <label>
                             تاریخ تحویل :
-                            <input onChange={({target}) => setDate(target.value)} name='date' type="date" placeholder="1400/12/23" />
+                            <input
+                                onChange={({ target }) => setDate(target.value)}
+                                name="date"
+                                type="date"
+                                placeholder="1400/12/23"
+                            />
                         </label>
                     </div>
                     {/* <AppDate /> */}

@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: "iransansFaNum";
+    direction: rtl;
+}
+
+form {
+    width: 500px;
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    padding: 1px 20px;
+    border-radius: 5px;
+}
+
+.timeout,
+.number,
+.date,
+.pass,
+.mail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+h3 {
+    color: #072227;
+    font-size: 14px;
+}
+
+.number input {
+    width: 350px;
+}
+
+.date input {
+    width: 50px;
+}
+
+.pass input {
+    width: 245px;
+}
+.pass button {
+    width: 100px;
+    padding: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-family: 'iransans';
+    font-size: 11px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.mail input {
+    width: 350px;
+}
+
+input {
+    outline: none;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #072227;
+}
+
+
+.yes {
+    width: 79%;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-family: 'iransans';
+    font-size: 11px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.no {
+    width: 19%;
+    padding: 8px;
+    background-color: #F44336;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-family: 'iransans';
+    font-size: 11px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
