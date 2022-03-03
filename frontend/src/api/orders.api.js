@@ -38,3 +38,27 @@ export async function editOrder(id , data) {
         return Promise.reject(e);
     }
 }
+
+
+export async function getOrderTrue(page) {
+    try {
+        const response = await http.get(`/orders?deliverd=true&_limit=5&_page=${page}`);
+        const all = response.headers['x-total-count']
+        return response.data.concat(all);
+    } catch (e) {
+        console.log(e);
+        return Promise.reject(e);
+    }
+}
+
+export async function getOrderFalse(page) {
+    try {
+        const response = await http.get(`/orders?deliverd=false&_limit=5&_page=${page}`);
+        const all = response.headers['x-total-count']
+        return response.data.concat(all);
+    } catch (e) {
+        console.log(e);
+        return Promise.reject(e);
+    }
+}
+

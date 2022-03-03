@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { Header } from "layout";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // import MyComponent from './DatePicker.component';
 import style from "../cart.module.scss";
 import DatePicker from "./DatePicker.component";
@@ -13,7 +13,7 @@ function List() {
     const [code, setCode] = useState("");
     const [phone, setPhone] = useState("");
     const [date, setDate] = useState("");
-
+    const form = useRef();
 
     const submit = (e) => {
         e.preventDefault();
@@ -26,21 +26,31 @@ function List() {
             date: date,
         };
 
-        if (data) {
+        if (
+            data.name &&
+            data.lastName &&
+            data.adress &&
+            data.code &&
+            data.phone &&
+            data.date
+        ) {
             localStorage.setItem("user", JSON.stringify(data));
-            let total = 0
+            let total = 0;
             JSON.parse(localStorage.getItem("cart_item")).forEach((item) => {
-                total += +item.price * item.number
+                total += +item.price * item.number;
             });
-        
+            form.current.style.boxShadow = "none";
+
             console.log(total);
             window.location.href = `http://127.0.0.1:5500/payment/?${total}`;
+        } else {
+            form.current.style.boxShadow = "rgb(244 67 54) 0px 0px 5px 0.25rem";
         }
     };
 
     return (
         <Header>
-            <form onSubmit={submit} className={style.form_list}>
+            <form onSubmit={submit} className={style.form_list} ref={form}>
                 <h3>اطلاعات تماس و ارسال :</h3>
                 <div className={style.input_box}>
                     <div className={style.row}>
@@ -110,9 +120,12 @@ function List() {
                         </label>
                     </div>
                     {/* <AppDate /> */}
-                    <Button type="submit" variant="contained">
-                        پرداخت
-                    </Button>
+                    <div style={{textAlign : 'center'}}>
+                        {" "}
+                        <Button type="submit" variant="contained">
+                            پرداخت
+                        </Button>
+                    </div>
                 </div>
             </form>
         </Header>

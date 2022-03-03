@@ -83,6 +83,7 @@ function OrderInfo(props) {
                                 { deliverd: true }
                             );
                             props.refresh()
+                            props.closeInfo()
                             return response.data;
                         } catch (e) {
                             console.log(e);
