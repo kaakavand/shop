@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getCategory } from "redux/action/caregory.action";
-import { getProductsFil } from "redux/action/productFilter.acrion";
-import Sidbar from "./components/Sidbar.component";
+import { getProductsFilCategory } from "redux/action/getProductCategory.action";
+// import { getProductsFilAll } from "redux/action/productFilter.acrion";
+// import Sidbar from "./components/Sidbar.component";
 import style from "./product.module.scss";
 
 function Products(props) {
@@ -96,7 +97,7 @@ function Products(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        gtProductFilter: (category) => dispatch(getProductsFil(category)),
+        gtProductFilter: (category) => dispatch(getProductsFilCategory(category)),
         gtCategory: () => dispatch(getCategory()),
     };
 };

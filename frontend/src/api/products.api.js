@@ -29,6 +29,16 @@ export async function getProductFilter(category) {
     }
 }
 
+export async function getProductFilterCategory(category) {
+    try {
+        const response = await http.get(`/products/?category=${category}`);
+        
+        return response.data;
+    } catch (e) {
+        return Promise.reject(e);
+    }
+}
+
 export async function getProductFilterAll() {
     try {
         const response = await http.get(`/products`);

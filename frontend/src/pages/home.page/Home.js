@@ -10,6 +10,10 @@ import {
 import style from "./home.module.scss";
 import { Link } from "react-router-dom";
 import { getSpecial } from "redux/action/productSpecial.action";
+import img1 from '../../assets/img/icons8-courier-80.png'
+import img2 from '../../assets/img/icons8-handshake-80.png'
+import img3 from '../../assets/img/icons8-sell-stock-80.png'
+import img4 from '../../assets/img/icons8-shop-80.png'
 
 function Home(props) {
     const [category, setCategory] = useState([]);
@@ -55,15 +59,19 @@ function Home(props) {
             </div>
             <div className={style.row_item}>
                 <div className={style.box}>
+                    <img src={img1} alt="" />
                     پشتیبانی 24 ساعته
                 </div>
                 <div className={style.box}>
+                    <img src={img2} alt="" />
                     هفت روز گارانتی
                 </div>
                 <div className={style.box}>
+                    <img src={img3} alt="" />
                     ارسال رایگان به تهران
                 </div>
                 <div className={style.box}>
+                    <img src={img4} alt="" />
                     هشت سال سابقه درخشان
                 </div>
             </div>

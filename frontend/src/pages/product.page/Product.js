@@ -104,7 +104,7 @@ function Product(props) {
                                               alt=""
                                               onClick={(e) => {
                                                   setImg(e.target.src);
-                                                  setFlagImg(true)
+                                                  setFlagImg(true);
                                               }}
                                           />
                                       </figure>
@@ -154,16 +154,24 @@ function Product(props) {
                         )}
                     </div>
                 </div>
-                <p>{first.description}</p>
+                <div
+                    style={{
+                        borderTop: "1px solid #eeeeee",
+                        marginTop: "20px",
+                        padding: "20px 10px",
+                    }}
+                >
+                    <h5 style={{ fontSize: "21px", color: "#072227" }}>
+                        توضیحات محصول :
+                    </h5>
+                    <p>{first.description}</p>
+                </div>
             </div>
 
             {flagImg ? (
                 <section onClick={() => setFlagImg(false)}>
                     <figure>
-                        <img
-                            src={`${img}`}
-                            alt=""
-                        />
+                        <img src={`${img}`} alt="" />
                     </figure>
                 </section>
             ) : null}
