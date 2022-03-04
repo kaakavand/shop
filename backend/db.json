@@ -25,7 +25,7 @@
       ],
       "thumbnail": "i1.jpg_ccf1039b4eba33b99a90712d1d2f6021",
       "price": "50",
-      "count": "80",
+      "count": "5",
       "category": "Mobile",
       "idCategory": 16,
       "description": "test",
@@ -224,70 +224,6 @@
       "amount": "520",
       "createdAt": 1645760178162,
       "id": 16
-    },
-    {
-      "name": "test",
-      "brand": "",
-      "image": [
-        "339eae.jpg_38cc5704bf48e2581ddded030c8b1f44"
-      ],
-      "thumbnail": "darkbomber-7d86783d9b44ade571e7e2f783008ee7.png_7d7816053cee2c898120fa5a53e548fc",
-      "price": "1000",
-      "count": "8",
-      "category": "watch",
-      "idCategory": "",
-      "description": "",
-      "amount": "520",
-      "createdAt": 1646292712754,
-      "id": 17
-    },
-    {
-      "name": "tablet apple",
-      "brand": "apple",
-      "image": [
-        "339eae.jpg_77821c7b723bc96b280e86d0d2262067"
-      ],
-      "thumbnail": "darkbomber-7d86783d9b44ade571e7e2f783008ee7.png_4f72485de7287d746a8d46e47d779164",
-      "price": "1000",
-      "count": "8",
-      "category": "Tablet",
-      "idCategory": 17,
-      "description": "test",
-      "amount": "520",
-      "createdAt": 1646367029441,
-      "id": 18
-    },
-    {
-      "name": " watch s1",
-      "brand": "apple",
-      "image": [
-        "resume.jpg_09cb2333923f4416472ead5988568f75"
-      ],
-      "thumbnail": "darkbomber-7d86783d9b44ade571e7e2f783008ee7.png_5ff2fbeb9344547c27dce440be71455d",
-      "price": "1500",
-      "count": "10",
-      "category": "watch",
-      "idCategory": 19,
-      "description": "",
-      "amount": "520",
-      "createdAt": 1646367794611,
-      "id": 19
-    },
-    {
-      "name": " watch S2",
-      "brand": "apple",
-      "image": [
-        "darkbomber-7d86783d9b44ade571e7e2f783008ee7.png_54dfe56a3a3e161665cfbde175b38a03"
-      ],
-      "thumbnail": "i1.jpg_8a5fe92aaf9f11db5b58ec50b97d6dc1",
-      "price": "50",
-      "count": "10",
-      "category": "watch",
-      "idCategory": 19,
-      "description": "test",
-      "amount": "520",
-      "createdAt": 1646367819884,
-      "id": 20
     }
   ],
   "category": [
@@ -623,6 +559,26 @@
       ],
       "createdAt": 1646367582389,
       "id": 160
+    },
+    {
+      "name": "amir",
+      "lastName": "kakavand",
+      "address": "tehran",
+      "phone": "0369999",
+      "totalPrice": 6000000,
+      "deliverTime": "2022-03-10",
+      "deliverEnd": "",
+      "deliverd": true,
+      "order": [
+        {
+          "price": "2000000",
+          "number": 3,
+          "name": "asus zenbook",
+          "id": "16"
+        }
+      ],
+      "createdAt": 1646374034626,
+      "id": 161
     }
   ],
   "protection": {

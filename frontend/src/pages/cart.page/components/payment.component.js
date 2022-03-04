@@ -67,7 +67,7 @@ function Payment() {
             setFlag(true);
         } else {
             setfirst(false);
-            navigate('/')
+            // navigate('/')
         }
     }, []);
 
