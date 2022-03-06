@@ -66,6 +66,9 @@ const Header = (props) => {
                 </header>
             </div>
             {props.children}
+            {/* <footer>
+                طراحی شده توسط amirhosein
+            </footer> */}
         </>
     );
 };

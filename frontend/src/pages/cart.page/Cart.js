@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { PATHS } from "config/routs.config";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import HijriExample from './components/DatePicker.component'
 
 function Cart(props) {
     const [first, setfirst] = useState(null);
@@ -132,7 +133,7 @@ function Cart(props) {
                                 <tr>
                                     <th className={style.name}>{item.name}</th>
                                     <th className={style.price}>
-                                        {item.price}
+                                        {Number(item.price).toLocaleString()}
                                     </th>
                                     <th className={style.count}>
                                         <div className={style.counter}>
@@ -169,16 +170,17 @@ function Cart(props) {
                     <h1>سبد سفارش خالی است</h1>
                 )}
                 <div className={style.rowEnd}>
-                    <h2>جمع سفارش : {price}</h2>
+                    <h2>جمع سفارش : {Number(price).toLocaleString()} تومان</h2>
                     <Button
                         variant="contained"
                         type="submit"
                         className={style.button}
-                        onClick={() => navigata(PATHS.Form)}
+                        onClick={() => navigata(PATHS.FORM)}
                         disabled = {first ? false : true}
                     >
                         نهایی کردن سبد خرید
                     </Button>
+                    {/* <HijriExample/> */}
                 </div>
             </div>
         </Header>

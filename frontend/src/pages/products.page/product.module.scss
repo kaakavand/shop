@@ -32,7 +32,6 @@
     }
 }
 
-
 .ul {
     background-color: #fff;
     box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
@@ -47,7 +46,7 @@
         font-size: 21px;
         background-color: #ebf2f3;
         padding: 10px;
-        color: #35858B;
+        color: #35858b;
         cursor: pointer;
     }
 
@@ -66,22 +65,58 @@
             border-radius: 5px;
 
             &:hover {
-                color: #35858B;
+                color: #35858b;
             }
         }
     }
 }
 
 .activeLi {
-    color: #35858B !important;
+    color: #35858b !important;
     background-color: #ebf2f3;
 }
 
 .h5 {
     width: 100%;
     text-align: center;
-    color: #F44336;
+    color: #f44336;
     border-radius: 5px;
     font-size: 25px;
-    background-color: #FFCDD2;
+    background-color: #ffcdd2;
+}
+
+@media only screen and (max-width: 1220px) {
+    .container {
+        width: 992px;
+    }
+}
+
+@media only screen and (max-width: 1005px) {
+    .container {
+        width: 800px;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+    .container {
+        width: 600px;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+    .container {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .container {
+        width: 320px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .container {
+        width: 95%;
+    }
 }

@@ -9,7 +9,7 @@ function OrderRow(props) {
         <>
             <tr className={style.t_row} id={props.id}>
                 <td className={style.name_product}>{props.name}</td>
-                <td className={style.name_product}>{props.price}</td>
+                <td className={style.name_product}>{Number(props.price).toLocaleString()}</td>
                 <td onClick={props.editPrice} className={style.price}>
                     {props.orderSubmit}
                 </td>

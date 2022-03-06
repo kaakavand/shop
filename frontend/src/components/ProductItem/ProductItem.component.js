@@ -21,7 +21,7 @@ function ProductItem(props) {
                 </figure>
                 <div className={style.info_product}>
                     <h2>{props.product_name}</h2>
-                    <h3>{props.price} تومان</h3>
+                    <h3>{Number(props.price).toLocaleString()} تومان</h3>
                 </div>
             <button className={props.category} onClick={navigateProduct}>مشاهده محصول</button>
             </div>

@@ -61,7 +61,7 @@ function OrderInfo(props) {
                                           {item.name}
                                       </th>
                                       <th className={style.price}>
-                                          {item.price}
+                                          {Number(item.price).toLocaleString()}
                                       </th>
                                       <th className={style.count}>
                                           {item.number}

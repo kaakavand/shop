@@ -39,11 +39,11 @@ export const AppRoute = () => {
                     element={<PublicRoute component={<Final />} />}
                 />
                 <Route
-                    path={PATHS.Form}
+                    path={PATHS.FORM}
                     element={<PublicRoute component={<List />} />}
                 />
                 <Route
-                    path={`${PATHS.Payment}/`}
+                    path={`${PATHS.PAYMENT}/`}
                     element={<PublicRoute component={<Payment />} />}
                 />
                 <Route

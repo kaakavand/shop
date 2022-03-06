@@ -15,9 +15,30 @@ body {
     h1 {
         font-family: "iranSansFaNum";
         color: #072227;
+        text-align: right !important;
+    }
+
+    .react-confirm-alert-button-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     button {
         font-family: "iranSansFaNum";
+        width: 45%;
+    }
+
+    button:last-child {
+        color: #f44336;
+        background: #ffdbd8;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    button:first-child {
+        color: #4CAF50;
+        background: #E8F5E9;
+        font-weight: bold;
+        font-size: 16px;
     }
 }

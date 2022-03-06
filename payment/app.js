@@ -4,7 +4,7 @@ const no = document.querySelector(".no");
 document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();
     document.querySelector(".price_total").innerHTML = ` ${
-        window.location.href.split("?")[1]
+        Number(window.location.href.split("?")[1]).toLocaleString()
     } تومان`;
 });
 

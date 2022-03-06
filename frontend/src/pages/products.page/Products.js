@@ -72,7 +72,7 @@ function Products(props) {
                     ))}
                 </ul>
             </div>
-            <ul className={style.ul}>
+            {/* <ul className={style.ul}>
                 <h2 onClick={() => setShowUl(!showUl)}>دسته بندی</h2>
                 {showUl
                     ? category.map((item) => (
@@ -90,7 +90,7 @@ function Products(props) {
                           </li>
                       ))
                     : null}
-            </ul>
+            </ul> */}
         </Header>
     );
 }

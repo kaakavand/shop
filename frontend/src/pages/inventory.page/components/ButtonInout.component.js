@@ -23,7 +23,7 @@ function ButtonInout(props) {
             {input ? (
                 <input
                     type="text"
-                    placeholder={props.placeholder}
+                    placeholder={Number(props.placeholder).toLocaleString()}
                     name={`price_${props.name}`}
                     onKeyDown={changEsc}
                 />

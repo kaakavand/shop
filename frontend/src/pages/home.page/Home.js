@@ -10,10 +10,11 @@ import {
 import style from "./home.module.scss";
 import { Link } from "react-router-dom";
 import { getSpecial } from "redux/action/productSpecial.action";
-import img1 from '../../assets/img/icons8-courier-80.png'
-import img2 from '../../assets/img/icons8-handshake-80.png'
-import img3 from '../../assets/img/icons8-sell-stock-80.png'
-import img4 from '../../assets/img/icons8-shop-80.png'
+import img1 from "../../assets/img/icons8-courier-80.png";
+import img2 from "../../assets/img/icons8-handshake-80.png";
+import img3 from "../../assets/img/icons8-sell-stock-80.png";
+import img4 from "../../assets/img/icons8-shop-80.png";
+import ButtonToTop from "components/ButtonToTop.component";
 
 function Home(props) {
     const [category, setCategory] = useState([]);
@@ -55,7 +56,6 @@ function Home(props) {
                         ) : null}
                     </figure>
                 </div>
-              
             </div>
             <div className={style.row_item}>
                 <div className={style.box}>
@@ -92,6 +92,7 @@ function Home(props) {
                         </div>
                     </div>
                 ))}
+                <ButtonToTop />
             </div>
         </Header>
     );

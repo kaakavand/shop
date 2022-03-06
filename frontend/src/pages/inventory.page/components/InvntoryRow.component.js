@@ -12,7 +12,7 @@ function InventoryRow(props) {
                 setValueNutton={(value) => setValueButton(value)}
                 placeholder={props.price}
                 name={props.priceId}
-                value={props.price}
+                value={Number(props.price).toLocaleString()}
                 setRender={props.setRender}
             />
             <ButtonInout

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { gtProductId } from "redux/action/productId.action";
 import style from "./product.module.scss";
+import {PATHS} from '../../config/routs.config'
 
 function Product(props) {
     const ref = useRef();
@@ -76,7 +77,7 @@ function Product(props) {
         setNumber(1);
     };
 
-    console.log(img);
+    console.log(PATHS);
 
     return (
         <Header flag={flag}>
@@ -120,7 +121,7 @@ function Product(props) {
                                 {first.category}
                             </Link>
                         </h3>
-                        <p>{first.price} تومان</p>
+                        <p>{Number(first.price).toLocaleString()} تومان</p>
                         {flagCart ? (
                             <>
                                 <div className={style.counter}>
@@ -142,7 +143,7 @@ function Product(props) {
                         ) : (
                             <button
                                 className={style.cartAdd}
-                                onClick={() => navigate("/cart")}
+                                onClick={() => navigate(PATHS.CART)}
                                 style={{
                                     background: "#ffdad8",
                                     color: "#f44336",
