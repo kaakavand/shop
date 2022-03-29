@@ -1,10 +1,10 @@
 import * as React from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import style from '../panel.module.scss'
-import { useNavigate } from "react-router-dom";
 import { PATHS } from "config/routs.config";
-import { useEffect } from "react";
+import style from '../panel.module.scss'
 
 export default function ColorToggleButton() {
     const [alignment, setAlignment] = React.useState(PATHS.PRODUCTS_MANAGE);

@@ -1,7 +1,7 @@
 .container {
     width: 1200px;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 80px;
 
     h1 {
         margin-top: 10px;
@@ -97,6 +97,7 @@
     margin: 0 auto;
     border-radius: 5px;
     transition: all ease 0.3s;
+    margin-top: 80px;
 
     button {
         width: 250px;
@@ -135,7 +136,7 @@
                 width: 400px;
                 padding: 7px;
                 border-radius: 3px;
-                border: 1px solid #072227;
+                border: 1px solid rgba(0, 0, 0, 0.23);
                 margin-top: 5px;
                 outline: none;
 
@@ -144,6 +145,68 @@
                 }
             }
         }
+
+        .datePicker {
+            width: 400px;
+
+            button {
+                width: auto;
+                background: none;
+            }
+
+            input {
+                border: none;
+                padding: 2px;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.inputDate {
+    padding: 7px;
+    border-radius: 3px;
+    margin-top: 5px;
+    outline: none;
+    border: 1px solid #072227 !important;
+}
+
+.title {
+    text-align: center;
+    h1 {
+        width: 100%;
+        color: #f44336;
+        background: #ffdbd8;
+    }
+
+    button {
+        background-color: #43a047;
+        color: #fff;
+        font-family: "iransansFaNum";
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+}
+
+.titleYes {
+    text-align: center;
+    h1 {
+        color: #4caf50;
+        background: #e8f5e9;
+        font-weight: bold;
+    }
+    button {
+        background-color: #43a047;
+        color: #fff;
+        font-family: "iransansFaNum";
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
     }
 }
 

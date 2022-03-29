@@ -1,7 +1,7 @@
 import ProductItem from "components/ProductItem/ProductItem.component";
 import { Header } from "layout";
 import React, { useEffect, useRef, useState } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { getCategory } from "redux/action/caregory.action";
 import {
     getProductsFil,
@@ -14,7 +14,8 @@ import img1 from "../../assets/img/icons8-courier-80.png";
 import img2 from "../../assets/img/icons8-handshake-80.png";
 import img3 from "../../assets/img/icons8-sell-stock-80.png";
 import img4 from "../../assets/img/icons8-shop-80.png";
-import ButtonToTop from "components/ButtonToTop.component";
+import { getProductFilter, productsSpecial } from "api/products.api";
+import { getProductFilterAction } from "../../redux/action/getProductFilter.action";
 
 function Home(props) {
     const [category, setCategory] = useState([]);
@@ -22,10 +23,17 @@ function Home(props) {
     const [special, setSpecial] = useState([{}, {}, {}]);
     const ref = useRef();
 
+    const productFilter = useSelector(state => state.ProductFilter)
+    const dispatch = useDispatch()
+    
     useEffect(() => {
         props.gtCategory().then((res) => setCategory(res));
         props.getSpecialProduct().then((res) => setSpecial(res));
-    }, []);
+        
+        getProductFilter('Mobile').then(res => dispatch(getProductFilterAction(res)))
+        // getProductFilter()
+    }, [props]);
+    console.log(productFilter);
 
     useEffect(() => {
         const arr = [];
@@ -92,7 +100,6 @@ function Home(props) {
                         </div>
                     </div>
                 ))}
-                <ButtonToTop />
             </div>
         </Header>
     );

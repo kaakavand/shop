@@ -21,7 +21,7 @@ function Login(props) {
         if (data.username.length > 3 && data.password.length > 3) {
             try {
                 await props.login(data);
-                navigate(PATHS.INVENTORY);
+                navigate(PATHS.PRODUCTS_MANAGE);
             } catch (e) {
                 formRef.current.style.boxShadow =
                     "rgbA(244, 67, 54 , 100%) 0 0 5px 0.25rem";

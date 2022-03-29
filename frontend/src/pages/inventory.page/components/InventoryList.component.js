@@ -1,28 +1,31 @@
 import React, { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { getProducts } from "redux/action/productsRow.action";
 import InventoryRow from "./InvntoryRow.component";
 import style from "../inventory.module.scss";
+import { products } from "api/products.api";
+import { getProductsAction } from "redux/action/getProducts.action";
 
 function InventoryList(props) {
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
     const [page, setPage] = useState(1);
     const [NumberOfItems, setNumberOfItems] = useState(1);
     const numberOfPage = Math.ceil(NumberOfItems / 5);
     const [numberOfPageArray, setNumberOfPageArray] = useState([]);
     const [first, setfirst] = useState(false);
+    const dispatch = useDispatch()
+    const getProducts = useSelector((state) => state.Products)
+
+    console.log(getProducts);
+    
+
 
     useEffect(() => {
-        props
-            .gtProducts(page)
-            .then((res) => setProducts(res.slice(0, res.length - 1)));
-        props
-            .gtProducts(page)
-            .then((res) =>
-                setNumberOfItems(Number(res.slice(res.length - 1)[0]))
-            );
+        products(page).then(res => dispatch(getProductsAction(res.slice(0, res.length - 1))));
+        products(page).then(res => setNumberOfItems(Number(res.slice(res.length - 1)[0])))
+        
         const array = [];
         for (let i = 1; i < numberOfPage + 1; i++) {
             array.push(i);
@@ -43,7 +46,7 @@ function InventoryList(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((item) => (
+                    {getProducts.products.map((item) => (
                         <InventoryRow
                             key={item.id}
                             price={item.price}
@@ -75,12 +78,4 @@ function InventoryList(props) {
     );
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        gtProducts: (pageNum) => dispatch(getProducts(pageNum)),
-    };
-};
-
-const InventoryRed = connect(null, mapDispatchToProps)(InventoryList);
-
-export default InventoryRed;
+export default InventoryList;

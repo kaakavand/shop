@@ -1,33 +1,31 @@
-// import moment from "moment";
-// import React, { useState } from "react";
-// import HijriUtils from "@date-io/hijri";
-// import {
-//     TimePicker,
-//     DateTimePicker,
-//     DatePicker,
-//     MuiPickersUtilsProvider,
-// } from "@material-ui/pickers";
-// import "moment/locale/ar-sa";
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import AdapterJalali from "@date-io/date-fns-jalali";
+import DatePicker from "@mui/lab/DatePicker";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import * as moment from "jalali-moment";
+import style from "../cart.module.scss";
 
-// function HijriExample() {
-//     const [selectedDate, handleDateChange] = useState(moment());
+export default function LocalizedDatePicker(props) {
+    const [value, setValue] = React.useState(new Date());
 
-//     return (
-//         <MuiPickersUtilsProvider utils={HijriUtils}>
-//             <DatePicker
-//                 clearable
-//                 okLabel="موافق"
-//                 cancelLabel="الغاء"
-//                 clearLabel="مسح"
-//                 labelFunc={(date) => (date ? date.format("iYYYY/iMM/iDD") : "")}
-//                 value={selectedDate}
-//                 onChange={() => console.log('yes')}
-//                 minDate="1937-03-14"
-//                 maxDate="2076-11-26"
-//                 onClick={(e) => e.preventDefault()}
-//             />
-//         </MuiPickersUtilsProvider>
-//     );
-// }
+    let persianDate = moment(value).locale("fa").format("YYYY/M/D");
+    
+    React.useEffect(() => {
+        props.setDateValue(persianDate);
+    }, [value]);
 
-// export default HijriExample;
+    return (
+        <LocalizationProvider
+            className={style.inputDate}
+            dateAdapter={AdapterJalali}
+        >
+            <DatePicker
+                mask="____/__/__"
+                value={value}
+                onChange={(newValue) => setValue(newValue)}
+                renderInput={(params) => <TextField {...params} />}
+            />
+        </LocalizationProvider>
+    );
+}

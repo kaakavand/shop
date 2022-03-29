@@ -17,7 +17,6 @@ class HttpService {
                 if (config.url !== "/auth/login") {
                     config.headers["Token"] = `${token}`;
                 }
-
                 return config;
             },
             (error) => {

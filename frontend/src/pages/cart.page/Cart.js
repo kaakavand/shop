@@ -1,13 +1,13 @@
-import { Header } from "layout";
 import React, { useEffect, useRef, useState } from "react";
+import { Header } from "layout";
 import { Button } from "@mui/material";
-import style from "./cart.module.scss";
 import { connect } from "react-redux";
 import { gtProductId } from "redux/action/productId.action";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "config/routs.config";
-import { confirmAlert } from "react-confirm-alert"; // Import
-import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import { confirmAlert } from "react-confirm-alert";
+import style from "./cart.module.scss";
+import "react-confirm-alert/src/react-confirm-alert.css"; 
 import HijriExample from './components/DatePicker.component'
 
 function Cart(props) {

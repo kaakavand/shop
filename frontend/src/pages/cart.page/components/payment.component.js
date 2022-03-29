@@ -3,6 +3,7 @@ import { Header } from "layout";
 import React, { useEffect, useState } from "react";
 import style from "../cart.module.scss";
 import { useNavigate } from "react-router-dom";
+import { PATHS } from "../../../config/routs.config";
 
 function Payment() {
     const [first, setfirst] = useState(false);
@@ -43,7 +44,10 @@ function Payment() {
 
     // window.location.reload(false);
     useEffect(() => {
-        if (result === "yes" && JSON.parse(localStorage.getItem("cart_item"))[0]) {
+        if (
+            result === "yes" &&
+            JSON.parse(localStorage.getItem("cart_item"))[0]
+        ) {
             let total = 0;
             JSON.parse(localStorage.getItem("cart_item")).forEach((item) => {
                 total += +item.price * item.number;
@@ -74,7 +78,21 @@ function Payment() {
     return (
         <Header close={first}>
             <div className={style.container}>
-                {first ? <h1>پرداخت موفق</h1> : <h1>پرداخت انجام نشد</h1>}
+                {first ? (
+                    <div className={style.titleYes}>
+                        <h1>پرداخت موفق</h1>
+                        <button onClick={() => navigate(PATHS.HOME)}>
+                            بازگشت به صفحه اصلی
+                        </button>
+                    </div>
+                ) : (
+                    <div className={style.title}>
+                        <h1>پرداخت انجام نشد</h1>
+                        <button onClick={() => navigate(PATHS.CART)}>
+                            بازگشت به سبد خرید
+                        </button>
+                    </div>
+                )}
             </div>
         </Header>
     );

@@ -7,6 +7,7 @@ import OrderRow from "./OrderRow.component";
 import style from "../orders.module.scss";
 import OrderInfo from "./OrderInfo.component";
 import { getTrue } from "redux/action/getTrueOrder.action";
+import moment from "jalali-moment";
 
 function OrderList(props) {
     const [flag, setFlag] = useState(false);
@@ -56,7 +57,7 @@ function OrderList(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {order.map((item) => (
+                    {order.reverse().map((item) => (
                         <OrderRow
                             click={(e) => {
                                 setId(e.target.parentElement.parentElement.id);
@@ -66,11 +67,8 @@ function OrderList(props) {
                             id={item.id}
                             name={item.name}
                             price={item.totalPrice}
-                            orderSubmit={new Intl.DateTimeFormat("en-US", {
-                                year: "numeric",
-                                month: "2-digit",
-                                day: "2-digit",
-                            }).format(item.createdAt)}
+                            orderSubmit={moment(item.createdAt).locale('fa').format('YYYY/M/D')}
+                        
                         />
                     ))}
                 </tbody>

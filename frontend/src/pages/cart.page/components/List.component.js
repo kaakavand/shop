@@ -3,6 +3,7 @@ import { Header } from "layout";
 import React, { useState, useRef } from "react";
 // import MyComponent from './DatePicker.component';
 import style from "../cart.module.scss";
+import LocalizedDatePicker from "./DatePicker.component";
 // import DatePicker from "./DatePicker.component";
 // import AppDate from "./DatePicker.component";
 
@@ -109,17 +110,13 @@ function List() {
                                 placeholder="09918547952"
                             />
                         </label>
-                        <label>
+                        <label className={style.datePicker}>
                             تاریخ تحویل :
-                            <input
-                                onChange={({ target }) => setDate(target.value)}
-                                name="date"
-                                type="date"
-                                placeholder="1400/12/23"
-                            />
+                            <LocalizedDatePicker setDateValue={(value) => setDate(value)} />
                         </label>
                     </div>
-                    {/* <AppDate /> */}
+                    
+                    
                     <div style={{textAlign : 'center'}}>
                         {" "}
                         <Button type="submit" variant="contained">

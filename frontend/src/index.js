@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import your route components too
 
 // console.log(getUsers().then(res => console.log(res)));
+
 render(
     <Provider store={store}>
         <AppRoute />

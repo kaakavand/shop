@@ -8,6 +8,7 @@ import style from "../orders.module.scss";
 import OrderInfo from "./OrderInfo.component";
 import { getFalse } from "redux/action/getFalseOrder.action";
 import { useRef } from "react";
+import moment from "jalali-moment";
 
 function OrderListEnd(props) {
     const [flag, setFlag] = useState(false);
@@ -69,18 +70,14 @@ function OrderListEnd(props) {
                     </tr>
                 </thead>
                 <tbody ref={body}>
-                    {order.map((item) => (
+                    {order.reverse().map((item) => (
                         <OrderRow
                             key={item.id}
                             click={showOrderInfo}
                             id={item.id}
                             name={item.name}
                             price={item.totalPrice}
-                            orderSubmit={new Intl.DateTimeFormat("en-US", {
-                                year: "numeric",
-                                month: "2-digit",
-                                day: "2-digit",
-                            }).format(item.createdAt)}
+                            orderSubmit={moment(item.createdAt).locale('fa').format('YYYY/M/D')}
                             amount="120"
                             name_product="iphone 13"
                         />

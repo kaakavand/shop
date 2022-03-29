@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { getCategory } from "redux/action/caregory.action";
 import { gtProductId } from "redux/action/productId.action";
 import style from "../../productManage.module.scss";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const CreatableSingle = (props) => {
     const [category, setCategory] = useState([]);
@@ -31,10 +33,10 @@ const CreatableSingle = (props) => {
     return (
         <>
             <div className={style.mainInput}>
-                {ulFlaf ? (
-                    <span onClick={() => setUlFlag(false)}>X</span>
+            {ulFlaf ? (
+                    <span onClick={() => setUlFlag(false)} style={{color : 'rgb(244, 67, 54)' , backgroundColor : 'rgb(255, 218, 216)'}}><ArrowDropUpIcon/></span>
                 ) : (
-                    <span onClick={() => setUlFlag(true)}>V</span>
+                    <span onClick={() => setUlFlag(true)}><ArrowDropDownIcon/></span>
                 )}
                 <input
                     type="text"

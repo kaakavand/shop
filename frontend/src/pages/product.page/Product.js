@@ -1,27 +1,30 @@
-import { Header } from "layout";
 import React, { useEffect, useRef, useState } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { gtProductId } from "redux/action/productId.action";
-import style from "./product.module.scss";
+import { getProductWId } from "redux/action/productId.action";
 import {PATHS} from '../../config/routs.config'
+import { getProductId } from "api/products.api";
+import style from "./product.module.scss";
+import { Header } from "layout";
 
 function Product(props) {
     const ref = useRef();
-    const [first, setfirst] = useState({});
+    // const [first, setfirst] = useState({});
     const [number, setNumber] = useState(1);
     const [flag, setFlag] = useState(false);
     const [flagCart, setFlagCart] = useState(true);
-
     const [flagImg, setFlagImg] = useState(false);
     const [img, setImg] = useState("");
-
+    const first = useSelector(state => state.ProductId.productId)
+    const dispatch = useDispatch()
     const navigate = useNavigate();
     const params = useParams();
 
     useEffect(() => {
-        props.gtProduct(params.id).then((res) => setfirst(res));
+        // props.gtProduct(params.id).then((res) => setfirst(res));
+        getProductId(params.id).then(res => dispatch(getProductWId(res)))
     }, [flagCart]);
+    
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem("cart_item"))) {
@@ -34,7 +37,6 @@ function Product(props) {
         }
     }, [flagCart]);
 
-    console.log(first);
 
     const counterSum = () => {
         let value = +ref.current.value;
@@ -77,7 +79,6 @@ function Product(props) {
         setNumber(1);
     };
 
-    console.log(PATHS);
 
     return (
         <Header flag={flag}>
@@ -180,12 +181,12 @@ function Product(props) {
     );
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        gtProduct: (id) => dispatch(gtProductId(id)),
-    };
-};
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         gtProduct: (id) => dispatch(gtProductId(id)),
+//     };
+// };
 
-const ProductRed = connect(null, mapDispatchToProps)(Product);
+// const ProductRed = connect(null, mapDispatchToProps)(Product);
 
-export default ProductRed;
+export default Product;

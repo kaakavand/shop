@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { getOrder } from "redux/action/getIdOrder.action";
 import style from "../orders.module.scss";
 import http from "../../../services/http.service";
+import moment from "jalali-moment";
+
 
 function OrderInfo(props) {
     // const [id, setId] = useState(false);
@@ -39,11 +41,7 @@ function OrderInfo(props) {
                 <h3 style={{ marginBottom: "35px" }}>
                     {" "}
                     زمان سفارش :{" "}
-                    {new Intl.DateTimeFormat("en-US", {
-                        year: "numeric",
-                        month: "2-digit",
-                        day: "2-digit",
-                    }).format(value.createdAt)}
+                    {moment(value.createdAt).locale('fa').format('YYYY/M/D')}
                 </h3>
                 <table>
                     <thead>

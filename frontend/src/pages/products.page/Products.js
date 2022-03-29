@@ -14,12 +14,12 @@ function Products(props) {
     const [first, setfirst] = useState([]);
     const [category, setCategory] = useState([]);
     const [showUl, setShowUl] = useState(false);
-
+    const numberOfPageArray = [];
     const [page, setPage] = useState(1);
     const NumberOfItems = 6;
     const numberOfPage = Math.ceil(first.length / NumberOfItems);
-    const numberOfPageArray = [];
 
+    
     for (let i = 1; i < numberOfPage + 1; i++) {
         numberOfPageArray.push(i);
     }
@@ -28,7 +28,7 @@ function Products(props) {
         setPage(Number(e.target.value));
     };
 
-    console.log(first);
+    // console.log(first);
 
     useEffect(() => {
         props.gtProductFilter(params.category).then((res) => setfirst(res));
@@ -72,7 +72,7 @@ function Products(props) {
                     ))}
                 </ul>
             </div>
-            {/* <ul className={style.ul}>
+            <ul className={style.ul}>
                 <h2 onClick={() => setShowUl(!showUl)}>دسته بندی</h2>
                 {showUl
                     ? category.map((item) => (
@@ -90,14 +90,15 @@ function Products(props) {
                           </li>
                       ))
                     : null}
-            </ul> */}
+            </ul>
         </Header>
     );
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        gtProductFilter: (category) => dispatch(getProductsFilCategory(category)),
+        gtProductFilter: (category) =>
+            dispatch(getProductsFilCategory(category)),
         gtCategory: () => dispatch(getCategory()),
     };
 };

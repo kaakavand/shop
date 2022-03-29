@@ -1,9 +1,9 @@
-import style from "../../panel/panel.module.scss";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
+import { PATHS } from "config/routs.config";
+import style from "../../panel/panel.module.scss";
 import Logo from "../../../assets/img/logo.png";
 import ColorToggleButton from "./Toggle.component";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { PATHS } from "config/routs.config";
 
 
 const HeaderPanel = (props) => {
